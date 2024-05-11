@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmb1q37q6q6wp"]
+
+[sub_resource type="Gradient" id="Gradient_4k0y6"]
+offsets = PackedFloat32Array(0.745614, 1)
+colors = PackedColorArray(0.344076, 0.344076, 0.344076, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6t5u2"]
+gradient = SubResource("Gradient_4k0y6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62mvq"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_6t5u2")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[node name="SoundParticle" type="GPUParticles2D"]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_62mvq")
+lifetime = 7.0
+explosiveness = 1.0
+fixed_fps = 0
+draw_order = 0

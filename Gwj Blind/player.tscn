@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://nafn1aysv3bb"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ddj2j"]
+[ext_resource type="PackedScene" uid="uid://do10vljuurfpw" path="res://chord_particle.tscn" id="2_i41mq"]
+[ext_resource type="PackedScene" uid="uid://dmb1q37q6q6wp" path="res://step_particle.tscn" id="3_1f511"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
+radius = 15.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ddj2j")
+chord_particle = ExtResource("2_i41mq")
+step_paritcle = ExtResource("3_1f511")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sb2fr")
+
+[node name="chord_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="step_timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="particles" type="Node2D" parent="."]
+
+[connection signal="timeout" from="chord_cooldown" to="." method="_on_chord_cooldown_timeout"]
+[connection signal="timeout" from="step_timer" to="." method="_on_step_timer_timeout"]

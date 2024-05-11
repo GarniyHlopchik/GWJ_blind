@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://brsh51xj48qq7"]
+
+[ext_resource type="PackedScene" uid="uid://chycdm7t57bej" path="res://wall.tscn" id="1_nkvkp"]
+[ext_resource type="PackedScene" uid="uid://nafn1aysv3bb" path="res://player.tscn" id="1_ti5pg"]
+[ext_resource type="Script" path="res://Enemy.gd" id="3_so3j1"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1ijur"]
+resource_name = "wall"
+scenes/1/scene = ExtResource("1_nkvkp")
+
+[sub_resource type="TileSet" id="TileSet_1l7v6"]
+tile_size = Vector2i(40, 40)
+sources/0 = SubResource("TileSetScenesCollectionSource_1ijur")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjlc6"]
+size = Vector2(30, 30)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_igniw"]
+vertices = PackedVector2Array(-262, -219, -82, -383, 364, -330, 481, 94, 503, 287, 248, 352, -2, 352, -206, 284, -427, 208, -391, 13, -340, -108, -391, 12)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), PackedInt32Array(10, 9, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-269, -226, -86, -394, 373, -340, 491, 91, 515, 295, 250, 362, -3, 363, -209, 293, -439, 215, -401, 11, -348, -114)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ti5pg")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1l7v6")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65537, 0, 65536, -131072, 0, 65536, -131071, 0, 65536, -65535, 0, 65536, 1, 0, 65536, 65537, 0, 65536, -65538, 0, 65536, -2, 0, 65536, 65534, 0, 65536, 131070, 0, 65536, 196606, 0, 65536, 196607, 0, 65536, 262143, 0, 65536, 196608, 0, 65536, 196609, 0, 65536, 262145, 0, 65536, 131075, 0, 65536, 196611, 0, 65536, 262147, 0, 65536, 327683, 0, 65536, 393219, 0, 65536, 393218, 0, 65536, 393216, 0, 65536, 458751, 0, 65536, 393215, 0, 65536, 262142, 0, 65536, 262141, 0, 65536, 327677, 0, 65536, 393213, 0, 65536, 524287, 0, 65536, 524286, 0, 65536, 524285, 0, 65536, 524284, 0, 65536, 524283, 0, 65536, 458747, 0, 65536, 393211, 0, 65536, 262139, 0, 65536, 196603, 0, 65536, 393210, 0, 65536, 2, 0, 65536, 65540, 0, 65536, 4, 0, 65536, -65532, 0, 65536, 131076, 0, 65536, -65534, 0, 65536, -131070, 0, 65536, -196606, 0, 65536, -196605, 0, 65536, -196604, 0, 65536, -196603, 0, 65536, -65531, 0, 65536, -65529, 0, 65536, -131065, 0, 65536, -196601, 0, 65536, -262137, 0, 65536, -327673, 0, 65536, -327674, 0, 65536, -327675, 0, 65536, -327676, 0, 65536, -327677, 0, 65536, -327678, 0, 65536, -327679, 0, 65536, -327680, 0, 65536, -196608, 0, 65536, 7, 0, 65536, 131079, 0, 65536, 131078, 0, 65536, 131080, 0, 65536, 8, 0, 65536, 9, 0, 65536, 10, 0, 65536, 65546, 0, 65536, 131082, 0, 65536, 196618, 0, 65536, 262154, 0, 65536, 327690, 0, 65536, 327689, 0, 65536, 327688, 0, 65536, 327687, 0, 65536, 327686, 0, 65536, 327685, 0, 65536, 196614, 0, 65536, 196615, 0, 65536, 196616, 0, 65536, 196612, 0, 65536, 393221, 0, 65536, 458757, 0, 65536, 524293, 0, 65536, 524292, 0, 65536, 524291, 0, 65536, 524290, 0, 65536, 524289, 0, 65536, 524288, 0, 65536, 589823, 0, 65536, 393209, 0, 65536, 327673, 0, 65536, 262137, 0, 65536, 196601, 0, 65536, 131065, 0, 65536, 65529, 0, 65536, 65530, 0, 65536, 65531, 0, 65536, 65532, 0, 65536, -4, 0, 65536, -65540, 0, 65536, -131076, 0, 65536, -196612, 0, 65536, -262148, 0, 65536, -262147, 0, 65536, -262146, 0, 65536, -262145, 0, 65536)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+visible = false
+position = Vector2(-19, -249)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_so3j1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+path_max_distance = 1000.0
+navigation_layers = 0
+avoidance_layers = 0
+avoidance_mask = 0
+debug_enabled = true
+debug_use_custom = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_wjlc6")
+
+[node name="ColorRect" type="ColorRect" parent="Enemy"]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 15.0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_igniw")
