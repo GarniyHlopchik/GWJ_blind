@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var acceleration_time: float
 
 @export var speed = 150.0
 @export var chord_particle: PackedScene;
@@ -8,6 +9,7 @@ extends CharacterBody2D
 @onready var chord_cooldown: Timer = $chord_cooldown
 @onready var particles: Node2D = $particles
 
+var direction
 var chord_ready = true;
 
 func _process(delta: float) -> void:
@@ -17,8 +19,15 @@ func _process(delta: float) -> void:
 		chord_ready = false;
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector("Left", "Right", "Up", "Down");
-	velocity = direction * speed
+	direction = Input.get_vector("Left", "Right", "Up", "Down")
+	direction = direction.normalized()
+	
+	#acceleration
+	var tween = get_tree().create_tween()
+	if direction:
+		tween.tween_property(self,"velocity",direction*speed,acceleration_time)
+	else:
+		tween.tween_property(self,"velocity",Vector2.ZERO,acceleration_time)
 	if(direction && step_timer.is_stopped()):
 		step_timer.start();
 	elif(!direction && !step_timer.is_stopped()):
