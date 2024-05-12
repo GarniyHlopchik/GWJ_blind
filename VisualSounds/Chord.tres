@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://g3wo6f6s2bdl"]
+
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_p1uic"]
+
+[resource]
+script = ExtResource("1_p1uic")
+color = Color(1, 1, 0, 1)
+width = 2
+lifetime = 2.0
+fadetime = 2.0
+speed = 500.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt0p54v12l452"]
+
+[ext_resource type="Script" path="res://SoundVisual/SoundPoint.gd" id="1_vke7u"]
+
+[node name="ParticlePoint" type="Node2D"]
+scale = Vector2(0.15625, 0.15625)
+script = ExtResource("1_vke7u")

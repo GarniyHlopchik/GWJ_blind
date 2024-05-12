@@ -22,11 +22,18 @@ func set_movement_target(movement_target: Vector2):
 	#print(movement_target)
 	navigation_agent.target_position = movement_target
 
+var cooldown = 0;
 
 func _physics_process(_delta):
 	#print(navigation_agent.is_target_reachable());
 	await get_tree().physics_frame
-	set_movement_target(get_global_mouse_position())
+	
+	if(cooldown > 0):
+		cooldown -= _delta;
+	else:
+		set_movement_target(get_global_mouse_position())
+		cooldown = 0.2;
+	
 	if navigation_agent.is_navigation_finished():
 		return
 	
@@ -34,4 +41,5 @@ func _physics_process(_delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	
 	move_and_slide()

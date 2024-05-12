@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://nafn1aysv3bb"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_ddj2j"]
-[ext_resource type="PackedScene" uid="uid://do10vljuurfpw" path="res://chord_particle.tscn" id="2_i41mq"]
-[ext_resource type="PackedScene" uid="uid://dmb1q37q6q6wp" path="res://step_particle.tscn" id="3_1f511"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
+[ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
+[ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://VisualSounds/Step.tres" id="3_6i83m"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
@@ -12,8 +12,8 @@ radius = 15.0
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 250.0
-chord_particle = ExtResource("2_i41mq")
-step_paritcle = ExtResource("3_1f511")
+chord_particle = ExtResource("2_0mq75")
+step_paritcle = ExtResource("3_6i83m")
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
@@ -50,7 +50,7 @@ shape = SubResource("CircleShape2D_sb2fr")
 wait_time = 0.5
 
 [node name="step_timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.3
 autostart = true
 
 [node name="particles" type="Node2D" parent="."]

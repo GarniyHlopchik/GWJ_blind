@@ -21,9 +21,11 @@ collision_friction = 1.0
 collision_bounce = 0.0
 
 [node name="SoundParticle" type="GPUParticles2D"]
-amount = 3
+emitting = false
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_62mvq")
 lifetime = 7.0
+speed_scale = 2.0
 explosiveness = 1.0
 fixed_fps = 0
 draw_order = 0
