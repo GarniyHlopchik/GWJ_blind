@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=21 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
@@ -16,9 +16,15 @@
 [ext_resource type="AudioStream" uid="uid://b0bafjdhmh713" path="res://Audio/Instrument/Note 8 - E.wav" id="11_br6il"]
 [ext_resource type="AudioStream" uid="uid://dncacadau4uce" path="res://Audio/Instrument/Note 9 - F#.wav" id="12_y1wx3"]
 [ext_resource type="AudioStream" uid="uid://dbujc5kfb2krg" path="res://Audio/Instrument/Note 10 - G .wav" id="13_pqefj"]
+[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
+[ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
+radius = 18.0
+height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ddj2j")
@@ -42,21 +48,6 @@ arrive_time = 0.5
 [node name="shake_timer" type="Timer" parent="camera/Camera2D"]
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sb2fr")
 
@@ -69,6 +60,23 @@ autostart = true
 
 [node name="sound_emiter" type="Node2D" parent="."]
 script = ExtResource("5_o25cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_psbc7")
+hframes = 6
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 200)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_jvyfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8p4u6")
 
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="chord_cooldown" to="." method="_on_chord_cooldown_timeout"]

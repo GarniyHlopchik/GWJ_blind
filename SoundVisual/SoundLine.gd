@@ -36,6 +36,9 @@ func _ready() -> void:
 
 var lifetime = 0
 var fadetime = 0
+var existance_time:
+	get:
+		return sound.lifetime + sound.fadetime
 var audio_finished = false;
 
 func _process(delta: float) -> void:
