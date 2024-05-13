@@ -21,7 +21,7 @@ func _sound_entered(area: Area2D):
 		return;
 	var current_procent = line.lifetime
 	var parent_procent = parent.lifetime
-	print("%s > %s = %s" % [parent_procent, current_procent, parent_procent > current_procent])
+	#print("%s > %s = %s" % [parent_procent, current_procent, parent_procent > current_procent])
 	if(line.lifetime > parent.lifetime):
 		line = parent
 	

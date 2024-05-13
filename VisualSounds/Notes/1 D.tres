@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=5 format=3 uid="uid://dqf6pm74vbn15"]
+
+[ext_resource type="AudioStream" uid="uid://ciitsdyve24vu" path="res://Audio/Instrument/Notes/Note 1 - D-001.wav" id="1_oicta"]
+[ext_resource type="AudioStream" uid="uid://d2plb0nph16y3" path="res://Audio/Instrument/Notes/Note 1 - D-002.wav" id="2_w5j2c"]
+[ext_resource type="AudioStream" uid="uid://nqfuq23511qd" path="res://Audio/Instrument/Notes/Note 1 - D-003.wav" id="3_y25bj"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="4_ncncs"]
+
+[resource]
+script = ExtResource("4_ncncs")
+audio = Array[AudioStream]([ExtResource("1_oicta"), ExtResource("2_w5j2c"), ExtResource("3_y25bj")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

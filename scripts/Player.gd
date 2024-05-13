@@ -5,11 +5,12 @@ extends CharacterBody2D
 @export var speed = 150.0
 @export var chord_particle: SoundVisual;
 @export var step_paritcle: SoundVisual;
-@export var note_wave: SoundVisual;
-@export var notes_audio: Array[AudioStream];
+@export var notes_audio: Array[SoundVisual];
 @onready var step_timer: Timer = $step_timer
 @onready var chord_cooldown: Timer = $chord_cooldown
 @onready var sound_emiter: VisualSoundEmiter = $sound_emiter
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 var direction
@@ -23,9 +24,9 @@ func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("Any_note")):
 		for i in notes_audio.size():
 			if(Input.is_action_just_pressed("Note_%s" % (i+1))):
-				var note = note_wave.duplicate() as SoundVisual;
-				note.audio.append(notes_audio[i]);777
-				sound_emiter.emit_wave(note);
+				sound_emiter.emit_wave(notes_audio[i]);
+				print(notes_audio[i].audio[0].resource_path);
+				print(i);
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("Left", "Right", "Up", "Down")
@@ -37,10 +38,13 @@ func _physics_process(delta: float) -> void:
 		tween.tween_property(self,"velocity",direction*speed,acceleration_time)
 	else:
 		tween.tween_property(self,"velocity",Vector2.ZERO,acceleration_time)
-	if(direction && step_timer.is_stopped()):
-		step_timer.start();
-	elif(!direction && !step_timer.is_stopped()):
-		step_timer.stop();
+	if(direction && !animation_player.is_playing()):
+		animation_player.play();
+		#step_timer.start();
+	elif(!direction && animation_player.is_playing()):
+		animation_player.stop();
+		#step_timer.stop();
+	sprite_2d.flip_h = direction.x < 0
 	move_and_slide()
 	
 

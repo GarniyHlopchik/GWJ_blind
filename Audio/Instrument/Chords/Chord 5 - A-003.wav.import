@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djgcy4e6cocl6"
+path="res://.godot/imported/Chord 5 - A-003.wav-2f61602e30ffe6a9dee553205a6dbf2b.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Chords/Chord 5 - A-003.wav"
+dest_files=["res://.godot/imported/Chord 5 - A-003.wav-2f61602e30ffe6a9dee553205a6dbf2b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

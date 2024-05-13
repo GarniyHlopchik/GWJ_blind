@@ -3,19 +3,16 @@
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://VisualSounds/Step.tres" id="3_6i83m"]
-[ext_resource type="AudioStream" uid="uid://c2b37fbyt7hlt" path="res://Audio/Instrument/Note 1 - E.wav" id="4_6qif0"]
+[ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://VisualSounds/Notes/1 D.tres" id="4_76v3q"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
-[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Note.tres" id="4_jmxlm"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
-[ext_resource type="AudioStream" uid="uid://bl6jh3k8rmf7k" path="res://Audio/Instrument/Note 2 - F#.wav" id="5_sb4rm"]
-[ext_resource type="AudioStream" uid="uid://xinrgwvnoqs0" path="res://Audio/Instrument/Note 3 - G.wav" id="6_75125"]
-[ext_resource type="AudioStream" uid="uid://yltb0i8w123y" path="res://Audio/Instrument/Note 4 - A.wav" id="7_ylhth"]
-[ext_resource type="AudioStream" uid="uid://uvvt4kg8olqy" path="res://Audio/Instrument/Note 5 - B.wav" id="8_tjtkc"]
-[ext_resource type="AudioStream" uid="uid://cxcxpnec1ioug" path="res://Audio/Instrument/Note 6 - C.wav" id="9_rif5c"]
-[ext_resource type="AudioStream" uid="uid://dgvprbrqpqb5d" path="res://Audio/Instrument/Note 7 - D#.wav" id="10_htmt4"]
-[ext_resource type="AudioStream" uid="uid://b0bafjdhmh713" path="res://Audio/Instrument/Note 8 - E.wav" id="11_br6il"]
-[ext_resource type="AudioStream" uid="uid://dncacadau4uce" path="res://Audio/Instrument/Note 9 - F#.wav" id="12_y1wx3"]
-[ext_resource type="AudioStream" uid="uid://dbujc5kfb2krg" path="res://Audio/Instrument/Note 10 - G .wav" id="13_pqefj"]
+[ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://VisualSounds/Notes/2 E.tres" id="5_t1w4f"]
+[ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://VisualSounds/Notes/3 F.tres" id="6_illfk"]
+[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://VisualSounds/Notes/4 G#.tres" id="7_mo7sm"]
+[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Notes/5 A.tres" id="8_0st4q"]
+[ext_resource type="Resource" uid="uid://hhc8ovn1pvcu" path="res://VisualSounds/Notes/6 B.tres" id="9_g1fnw"]
+[ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://VisualSounds/Notes/7 C.tres" id="10_24dym"]
+[ext_resource type="Resource" uid="uid://dff8sfuvf5dj2" path="res://VisualSounds/Notes/8 D.tres" id="11_4675i"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
 [ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
 
@@ -26,14 +23,69 @@ radius = 15.0
 radius = 18.0
 height = 74.0
 
+[sub_resource type="Animation" id="Animation_ooot5"]
+resource_name = "walk"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_step_timer_timeout"
+}, {
+"args": [],
+"method": &"_on_step_timer_timeout"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s0pgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
+_data = {
+"RESET": SubResource("Animation_s0pgx"),
+"walk": SubResource("Animation_ooot5")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 250.0
 chord_particle = ExtResource("2_0mq75")
 step_paritcle = ExtResource("3_6i83m")
-note_wave = ExtResource("4_jmxlm")
-notes_audio = Array[AudioStream]([ExtResource("4_6qif0"), ExtResource("5_sb4rm"), ExtResource("6_75125"), ExtResource("7_ylhth"), ExtResource("8_tjtkc"), ExtResource("9_rif5c"), ExtResource("10_htmt4"), ExtResource("11_br6il"), ExtResource("12_y1wx3"), ExtResource("13_pqefj")])
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_g1fnw"), ExtResource("10_24dym"), ExtResource("11_4675i")])
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
@@ -56,7 +108,6 @@ wait_time = 0.5
 
 [node name="step_timer" type="Timer" parent="."]
 wait_time = 0.3
-autostart = true
 
 [node name="sound_emiter" type="Node2D" parent="."]
 script = ExtResource("5_o25cj")
@@ -78,6 +129,13 @@ script = ExtResource("18_jvyfl")
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8p4u6")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_gby43")
+}
+autoplay = "walk"
+speed_scale = 1.2
+
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="chord_cooldown" to="." method="_on_chord_cooldown_timeout"]
-[connection signal="timeout" from="step_timer" to="." method="_on_step_timer_timeout"]

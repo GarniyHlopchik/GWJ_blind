@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4g3en7nwtagw"
+path="res://.godot/imported/Chord 8 - D-004.wav-ef92d7b976289011e1b52a839b47164a.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Chords/Chord 8 - D-004.wav"
+dest_files=["res://.godot/imported/Chord 8 - D-004.wav-ef92d7b976289011e1b52a839b47164a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvn7ulydh3l20"
+path="res://.godot/imported/Note 4 - G#-004.wav-c00ceb0159c6bb6f6b70221ba6cd6a8c.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Notes/Note 4 - G#-004.wav"
+dest_files=["res://.godot/imported/Note 4 - G#-004.wav-c00ceb0159c6bb6f6b70221ba6cd6a8c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
