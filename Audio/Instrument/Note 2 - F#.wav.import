@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl6jh3k8rmf7k"
+path="res://.godot/imported/Note 2 - F#.wav-80ba4149835cf7c8bf91f3f91d46cca0.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Note 2 - F#.wav"
+dest_files=["res://.godot/imported/Note 2 - F#.wav-80ba4149835cf7c8bf91f3f91d46cca0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

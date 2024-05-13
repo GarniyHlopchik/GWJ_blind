@@ -1,9 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=18 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://VisualSounds/Step.tres" id="3_6i83m"]
+[ext_resource type="AudioStream" uid="uid://c2b37fbyt7hlt" path="res://Audio/Instrument/Note 1 - E.wav" id="4_6qif0"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
+[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Note.tres" id="4_jmxlm"]
+[ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
+[ext_resource type="AudioStream" uid="uid://bl6jh3k8rmf7k" path="res://Audio/Instrument/Note 2 - F#.wav" id="5_sb4rm"]
+[ext_resource type="AudioStream" uid="uid://xinrgwvnoqs0" path="res://Audio/Instrument/Note 3 - G.wav" id="6_75125"]
+[ext_resource type="AudioStream" uid="uid://yltb0i8w123y" path="res://Audio/Instrument/Note 4 - A.wav" id="7_ylhth"]
+[ext_resource type="AudioStream" uid="uid://uvvt4kg8olqy" path="res://Audio/Instrument/Note 5 - B.wav" id="8_tjtkc"]
+[ext_resource type="AudioStream" uid="uid://cxcxpnec1ioug" path="res://Audio/Instrument/Note 6 - C.wav" id="9_rif5c"]
+[ext_resource type="AudioStream" uid="uid://dgvprbrqpqb5d" path="res://Audio/Instrument/Note 7 - D#.wav" id="10_htmt4"]
+[ext_resource type="AudioStream" uid="uid://b0bafjdhmh713" path="res://Audio/Instrument/Note 8 - E.wav" id="11_br6il"]
+[ext_resource type="AudioStream" uid="uid://dncacadau4uce" path="res://Audio/Instrument/Note 9 - F#.wav" id="12_y1wx3"]
+[ext_resource type="AudioStream" uid="uid://dbujc5kfb2krg" path="res://Audio/Instrument/Note 10 - G .wav" id="13_pqefj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -14,6 +26,8 @@ acceleration_time = 0.15
 speed = 250.0
 chord_particle = ExtResource("2_0mq75")
 step_paritcle = ExtResource("3_6i83m")
+note_wave = ExtResource("4_jmxlm")
+notes_audio = Array[AudioStream]([ExtResource("4_6qif0"), ExtResource("5_sb4rm"), ExtResource("6_75125"), ExtResource("7_ylhth"), ExtResource("8_tjtkc"), ExtResource("9_rif5c"), ExtResource("10_htmt4"), ExtResource("11_br6il"), ExtResource("12_y1wx3"), ExtResource("13_pqefj")])
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
@@ -53,7 +67,8 @@ wait_time = 0.5
 wait_time = 0.3
 autostart = true
 
-[node name="particles" type="Node2D" parent="."]
+[node name="sound_emiter" type="Node2D" parent="."]
+script = ExtResource("5_o25cj")
 
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="chord_cooldown" to="." method="_on_chord_cooldown_timeout"]

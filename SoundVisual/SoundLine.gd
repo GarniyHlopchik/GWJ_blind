@@ -4,11 +4,13 @@ class_name SoundLine
 var sound: SoundVisual;
 var rays: Array[Node];
 const PARTICLE_POINT = preload("res://SoundVisual/particle_point.tscn")
+var audio_node: AudioStreamPlayer2D
 
 func _ready() -> void:
 	closed = true;
 	if(!sound):
 		printerr("SoundVisual resource is not set");
+		return;
 	width = sound.width;
 	default_color = sound.color;
 	for ray: RayCast2D in rays:	
@@ -23,16 +25,29 @@ func _ready() -> void:
 		point.speed = sound.speed;
 		add_child(point);
 		points.append(Vector2.ZERO)
+	if(sound.audio.is_empty()):
+		audio_finished = true;
+		return;
+	var audio_node = AudioStreamPlayer2D.new();
+	audio_node.stream = sound.audio.pick_random()
+	audio_node.autoplay = true;
+	audio_node.finished.connect(func (): audio_finished = true)
+	add_child(audio_node);
 
 var lifetime = 0
 var fadetime = 0
+var audio_finished = false;
 
 func _process(delta: float) -> void:
-	var arr = get_children().map(func (point): return point.position)
+	if(!sound):
+		return;
+	var arr = get_children()\
+		.filter(func (node): return node is SoundPoint)\
+		.map(func (point): return point.position)
 	points = PackedVector2Array(arr);
 	lifetime += delta;
 	if(lifetime > sound.lifetime):
 		fadetime += delta;
 		default_color.a = 1 - fadetime / sound.fadetime
-	if(fadetime > sound.fadetime):
+	if(fadetime > sound.fadetime && audio_finished):
 		queue_free();

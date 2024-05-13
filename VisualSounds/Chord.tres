@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://g3wo6f6s2bdl"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=10 format=3 uid="uid://g3wo6f6s2bdl"]
 
+[ext_resource type="AudioStream" uid="uid://c8ti7ku5d0jhb" path="res://Audio/Instrument/Chord 1 - E, B.wav" id="1_btt7v"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_p1uic"]
+[ext_resource type="AudioStream" uid="uid://cim21qgbwxgpe" path="res://Audio/Instrument/Chord 2 - D#, A.wav" id="2_us7dl"]
+[ext_resource type="AudioStream" uid="uid://b4efvakwbw2a2" path="res://Audio/Instrument/Chord 3 - C, G.wav" id="3_1fbsk"]
+[ext_resource type="AudioStream" uid="uid://bjrmpi6riwar6" path="res://Audio/Instrument/Chord 4 - B, F#.wav" id="4_1g04b"]
+[ext_resource type="AudioStream" uid="uid://ll14sb5pcgj0" path="res://Audio/Instrument/Chord 5 - A, E.wav" id="5_nes2c"]
+[ext_resource type="AudioStream" uid="uid://2yxodxe5aio3" path="res://Audio/Instrument/Chord 6 - G, D#.wav" id="6_s5ge8"]
+[ext_resource type="AudioStream" uid="uid://wcaxhmw0ehcv" path="res://Audio/Instrument/Chord 7 - F#, C.wav" id="7_1337c"]
+[ext_resource type="AudioStream" uid="uid://bcai0drxttbfd" path="res://Audio/Instrument/Chord 8 - F#,B.wav" id="8_1odjs"]
 
 [resource]
 script = ExtResource("1_p1uic")
+audio = Array[AudioStream]([ExtResource("1_btt7v"), ExtResource("2_us7dl"), ExtResource("3_1fbsk"), ExtResource("4_1g04b"), ExtResource("5_nes2c"), ExtResource("6_s5ge8"), ExtResource("7_1337c"), ExtResource("8_1odjs")])
 color = Color(1, 1, 0, 1)
 width = 2
 lifetime = 2.0
