@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://bxeem133rbk56"]
+
+[ext_resource type="AudioStream" uid="uid://beg26375ity7l" path="res://Audio/Instrument/Notes/Note 09 - D.wav" id="1_8mgym"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_d2fx8"]
+
+[resource]
+script = ExtResource("2_d2fx8")
+audio = Array[AudioStream]([ExtResource("1_8mgym")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

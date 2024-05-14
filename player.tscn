@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=24 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
 [ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://VisualSounds/Notes/2 E.tres" id="5_t1w4f"]
 [ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://VisualSounds/Notes/3 F.tres" id="6_illfk"]
-[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://VisualSounds/Notes/4 G#.tres" id="7_mo7sm"]
-[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Notes/5 A.tres" id="8_0st4q"]
-[ext_resource type="Resource" uid="uid://hhc8ovn1pvcu" path="res://VisualSounds/Notes/6 B.tres" id="9_g1fnw"]
-[ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://VisualSounds/Notes/7 C.tres" id="10_24dym"]
-[ext_resource type="Resource" uid="uid://dff8sfuvf5dj2" path="res://VisualSounds/Notes/8 D.tres" id="11_4675i"]
+[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://VisualSounds/Notes/4 F#.tres" id="7_mo7sm"]
+[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Notes/5 G.tres" id="8_0st4q"]
+[ext_resource type="Resource" uid="uid://cwq4a78htuhsn" path="res://VisualSounds/Notes/6 A.tres" id="9_k7ol8"]
+[ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://VisualSounds/Notes/7 A#.tres" id="10_24dym"]
+[ext_resource type="Resource" uid="uid://dff8sfuvf5dj2" path="res://VisualSounds/Notes/8 С.tres" id="11_4675i"]
+[ext_resource type="Resource" uid="uid://bxeem133rbk56" path="res://VisualSounds/Notes/9 D.tres" id="12_xoqwp"]
+[ext_resource type="Resource" uid="uid://bikqkx1cslb0a" path="res://VisualSounds/Notes/10 E.tres" id="13_alj3e"]
+[ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://VisualSounds/Notes/11 F#.tres" id="14_noaal"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
 [ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
 
@@ -22,6 +25,21 @@ radius = 15.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
 radius = 18.0
 height = 74.0
+
+[sub_resource type="Animation" id="Animation_s0pgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_ooot5"]
 resource_name = "walk"
@@ -58,21 +76,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_s0pgx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
 _data = {
 "RESET": SubResource("Animation_s0pgx"),
@@ -85,7 +88,7 @@ acceleration_time = 0.15
 speed = 250.0
 chord_particle = ExtResource("2_0mq75")
 step_paritcle = ExtResource("3_6i83m")
-notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_g1fnw"), ExtResource("10_24dym"), ExtResource("11_4675i")])
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_k7ol8"), ExtResource("10_24dym"), ExtResource("11_4675i"), ExtResource("12_xoqwp"), ExtResource("13_alj3e"), ExtResource("14_noaal")])
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true

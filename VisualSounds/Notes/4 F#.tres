@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://byqa6lpw2i5ah"]
+
+[ext_resource type="AudioStream" uid="uid://cun51nu1lr724" path="res://Audio/Instrument/Notes/Note 04 - F#.wav" id="1_rk281"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_kjpqu"]
+
+[resource]
+script = ExtResource("2_kjpqu")
+audio = Array[AudioStream]([ExtResource("1_rk281")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

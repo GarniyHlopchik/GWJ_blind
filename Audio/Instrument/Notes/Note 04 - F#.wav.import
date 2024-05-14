@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cun51nu1lr724"
+path="res://.godot/imported/Note 04 - F#.wav-e90a5018204044833e2642486e7b263c.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Notes/Note 04 - F#.wav"
+dest_files=["res://.godot/imported/Note 04 - F#.wav-e90a5018204044833e2642486e7b263c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

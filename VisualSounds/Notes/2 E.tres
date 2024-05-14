@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=5 format=3 uid="uid://bvhrvie7lrs32"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://bvhrvie7lrs32"]
 
-[ext_resource type="AudioStream" uid="uid://ckmgp8pgknmq4" path="res://Audio/Instrument/Notes/Note 2 - E-001.wav" id="1_fyj36"]
-[ext_resource type="AudioStream" uid="uid://byfw8ubbq0rbn" path="res://Audio/Instrument/Notes/Note 2 - E-002.wav" id="2_ny3n8"]
-[ext_resource type="AudioStream" uid="uid://w2c1ojdk1i78" path="res://Audio/Instrument/Notes/Note 2 - E-003.wav" id="3_5iilj"]
+[ext_resource type="AudioStream" uid="uid://dla35naxtwrcq" path="res://Audio/Instrument/Notes/Note 02 - E.wav" id="1_im6aa"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="4_8l8su"]
 
 [resource]
 script = ExtResource("4_8l8su")
-audio = Array[AudioStream]([ExtResource("1_fyj36"), ExtResource("2_ny3n8"), ExtResource("3_5iilj")])
+audio = Array[AudioStream]([ExtResource("1_im6aa")])
 color = Color(1, 1, 0, 1)
 width = 1.5
 lifetime = 0.0

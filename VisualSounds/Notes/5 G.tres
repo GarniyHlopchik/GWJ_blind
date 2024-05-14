@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://dx676b6fuiryy"]
+
+[ext_resource type="AudioStream" uid="uid://dmnpf1detyjqk" path="res://Audio/Instrument/Notes/Note 05 - G.wav" id="1_s4kdw"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_7h8ve"]
+
+[resource]
+script = ExtResource("2_7h8ve")
+audio = Array[AudioStream]([ExtResource("1_s4kdw")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

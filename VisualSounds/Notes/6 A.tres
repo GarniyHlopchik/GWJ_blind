@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://cwq4a78htuhsn"]
+
+[ext_resource type="AudioStream" uid="uid://bgxxhxw3x5mnr" path="res://Audio/Instrument/Notes/Note 06 - A.wav" id="1_cbpyx"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_q7yhl"]
+
+[resource]
+script = ExtResource("2_q7yhl")
+audio = Array[AudioStream]([ExtResource("1_cbpyx")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0
