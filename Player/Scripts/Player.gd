@@ -5,7 +5,11 @@ class_name Player
 @export var speed = 150.0
 
 var direction: Vector2;
-
+func damage_reaction(knockback_dir):
+	pass
+func death():
+	#тут те що буде при смерті
+	print("You died")
 func _process(delta: float) -> void:
 	PlayerState.position = global_position;
 
