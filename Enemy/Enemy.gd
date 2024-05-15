@@ -9,6 +9,8 @@ var is_moving: bool = false;
 func _ready():
 	call_deferred("actor_setup")
 
+
+
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
@@ -18,6 +20,10 @@ func set_movement_target(movement_target: Vector2):
 	#print(movement_target)
 	navigation_agent.target_position = movement_target
 
+func damage_reaction(knockback_dir):
+	pass
+func death():
+	queue_free()
 var cooldown = 0;
 
 func _physics_process(_delta):

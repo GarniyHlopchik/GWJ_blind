@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=34 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
+[ext_resource type="Script" path="res://health_component.gd" id="27_25wlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -87,6 +88,10 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
+radius = 18.0
+height = 74.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_divfl"]
 radius = 18.0
 height = 74.0
 
@@ -158,6 +163,8 @@ shape = SubResource("CapsuleShape2D_8p4u6")
 
 [node name="blade" type="Area2D" parent="."]
 position = Vector2(0, -48)
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("16_j0q56")
 
 [node name="hit_area" type="CollisionPolygon2D" parent="blade"]
@@ -182,7 +189,18 @@ stream = ExtResource("25_evxge")
 autoplay = true
 script = ExtResource("26_2kq0c")
 
+[node name="health_component" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("27_25wlk")
+max_hp = 100
+
+[node name="hitbox" type="CollisionShape2D" parent="health_component"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_divfl")
+
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
+[connection signal="area_entered" from="blade" to="blade" method="_on_area_entered"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
 [connection signal="timeout" from="blade/attack_cooldown" to="blade" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="blade/attack_duration" to="blade" method="_on_attack_duration_timeout"]

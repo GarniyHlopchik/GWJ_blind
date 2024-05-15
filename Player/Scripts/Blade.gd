@@ -1,6 +1,6 @@
 extends Area2D
 var can_attack = true
-
+@export var damage: int = 30
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 func _input(event: InputEvent) -> void:
@@ -21,6 +21,7 @@ func _on_attack_duration_timeout() -> void:
 	$hit_area.disabled = true
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage"):
-		body.take_damage(50,transform.x)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.has_method("take_damage"):
+		area.take_damage(damage,transform.x)
