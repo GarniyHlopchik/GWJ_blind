@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="17_h3t5y"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
 [ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F#.tres" id="17_tped4"]
-[ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
+[ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="18_jvyfl"]
 [ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
 [ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_awhfr")
 audio = Array[AudioStream]([])
-color = Color(0.678431, 0.572549, 0.552941, 1)
+color = Color(1, 0.784314, 0.784314, 0.6)
 width = 1.0
 lifetime = 0.1
 fadetime = 0.1

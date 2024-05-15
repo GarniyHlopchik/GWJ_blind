@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dysn8brf1q41w" path="res://Enemy/VisualSounds/Step.tres" id="3_ap6ei"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_n7ht6"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="5_acww8"]
-[ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="6_ktc2i"]
+[ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="6_ktc2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
 radius = 15.0
@@ -30,7 +30,7 @@ avoidance_mask = 0
 shape = SubResource("CircleShape2D_y4fym")
 
 [node name="step_timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.4
 autostart = true
 script = ExtResource("2_pfdwd")
 step_sound = ExtResource("3_ap6ei")
