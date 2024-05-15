@@ -8,6 +8,7 @@ func _ready() -> void:
 	var current_angle = deg_to_rad(180);
 	for i in ray_cast_point_amount:
 		var ray = RayCast2D.new()
+		ray.collision_mask = 1;
 		ray.target_position = Vector2(
 			sin(current_angle), 
 			cos(current_angle)

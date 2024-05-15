@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ranetadpnm52"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_vmxwv"]
+[ext_resource type="Script" path="res://Enemy/step_timer.gd" id="2_pfdwd"]
+[ext_resource type="Resource" uid="uid://dysn8brf1q41w" path="res://Enemy/VisualSounds/Step.tres" id="3_ap6ei"]
+[ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_n7ht6"]
+[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="5_acww8"]
+[ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="6_ktc2i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
+radius = 15.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
+radius = 18.0
+height = 74.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_vmxwv")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_max_distance = 1000.0
+avoidance_layers = 0
+avoidance_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y4fym")
+
+[node name="step_timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+script = ExtResource("2_pfdwd")
+step_sound = ExtResource("3_ap6ei")
+
+[node name="sound_emiter" type="Node2D" parent="."]
+script = ExtResource("3_n7ht6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(0, -40)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_acww8")
+hframes = 6
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 200)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_ktc2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")

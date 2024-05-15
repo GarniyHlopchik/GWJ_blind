@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://dysn8brf1q41w"]
+
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_awhfr"]
+
+[resource]
+script = ExtResource("1_awhfr")
+audio = Array[AudioStream]([])
+color = Color(0.678431, 0.572549, 0.552941, 1)
+width = 1.0
+lifetime = 0.1
+fadetime = 0.1
+speed = 500.0

@@ -1,31 +1,31 @@
 [gd_scene load_steps=32 format=3 uid="uid://nafn1aysv3bb"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_ddj2j"]
-[ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
-[ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://VisualSounds/Step.tres" id="3_6i83m"]
-[ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://VisualSounds/Notes/1 D.tres" id="4_76v3q"]
+[ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
+[ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://Player/VisualSounds/Chord.tres" id="5_kpy64"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
-[ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://VisualSounds/Notes/2 E.tres" id="5_t1w4f"]
-[ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://VisualSounds/Notes/3 F.tres" id="6_illfk"]
-[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://VisualSounds/Notes/4 F#.tres" id="7_mo7sm"]
-[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://VisualSounds/Notes/5 G.tres" id="8_0st4q"]
-[ext_resource type="Resource" uid="uid://cwq4a78htuhsn" path="res://VisualSounds/Notes/6 A.tres" id="9_k7ol8"]
-[ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://VisualSounds/Notes/7 A#.tres" id="10_24dym"]
-[ext_resource type="Resource" uid="uid://dff8sfuvf5dj2" path="res://VisualSounds/Notes/8 С.tres" id="11_4675i"]
-[ext_resource type="Resource" uid="uid://bxeem133rbk56" path="res://VisualSounds/Notes/9 D.tres" id="12_xoqwp"]
-[ext_resource type="Resource" uid="uid://bikqkx1cslb0a" path="res://VisualSounds/Notes/10 E.tres" id="13_alj3e"]
-[ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://VisualSounds/Notes/11 F#.tres" id="14_noaal"]
-[ext_resource type="Script" path="res://Player/SitTimer.gd" id="15_07xxq"]
-[ext_resource type="Script" path="res://Player/Chord.gd" id="16_2hsuj"]
-[ext_resource type="Script" path="res://Player/Blade.gd" id="16_j0q56"]
+[ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://Player/VisualSounds/Notes/1 D.tres" id="7_ac2rc"]
+[ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://Player/VisualSounds/Notes/2 E.tres" id="8_sqrow"]
+[ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://Player/VisualSounds/Notes/3 F.tres" id="9_n3xd0"]
+[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://Player/VisualSounds/Notes/4 F#.tres" id="10_3x7yu"]
+[ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://Player/VisualSounds/Notes/5 G.tres" id="11_nco73"]
+[ext_resource type="Resource" uid="uid://cwq4a78htuhsn" path="res://Player/VisualSounds/Notes/6 A.tres" id="12_jj07r"]
+[ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://Player/VisualSounds/Notes/7 A#.tres" id="13_3g485"]
+[ext_resource type="Resource" uid="uid://dff8sfuvf5dj2" path="res://Player/VisualSounds/Notes/8 С.tres" id="14_lmjqm"]
+[ext_resource type="Script" path="res://Player/Scripts/SitTimer.gd" id="15_07xxq"]
+[ext_resource type="Resource" uid="uid://bxeem133rbk56" path="res://Player/VisualSounds/Notes/9 D.tres" id="15_8hpbh"]
+[ext_resource type="Script" path="res://Player/Scripts/Chord.gd" id="16_2hsuj"]
+[ext_resource type="Resource" uid="uid://bikqkx1cslb0a" path="res://Player/VisualSounds/Notes/10 E.tres" id="16_88oet"]
+[ext_resource type="Script" path="res://Player/Scripts/Blade.gd" id="16_j0q56"]
 [ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="17_h3t5y"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
+[ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F#.tres" id="17_tped4"]
 [ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
-[ext_resource type="Script" path="res://Player/Notes.gd" id="18_rqeu1"]
-[ext_resource type="Script" path="res://Player/Animator.gd" id="19_jj5cj"]
+[ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
+[ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
+[ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
-[ext_resource type="Script" path="res://Player/MusicFade.gd" id="26_2kq0c"]
+[ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -91,6 +91,8 @@ radius = 18.0
 height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 250.0
@@ -118,11 +120,11 @@ script = ExtResource("15_07xxq")
 [node name="chord_cooldown" type="Timer" parent="."]
 wait_time = 0.6
 script = ExtResource("16_2hsuj")
-chord_particle = ExtResource("2_0mq75")
+chord_particle = ExtResource("5_kpy64")
 
 [node name="notes" type="Node2D" parent="."]
 script = ExtResource("18_rqeu1")
-notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_k7ol8"), ExtResource("10_24dym"), ExtResource("11_4675i"), ExtResource("12_xoqwp"), ExtResource("13_alj3e"), ExtResource("14_noaal")])
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("17_tped4")])
 
 [node name="sound_emiter" type="Node2D" parent="."]
 script = ExtResource("5_o25cj")
@@ -135,7 +137,7 @@ libraries = {
 autoplay = "walk"
 speed_scale = 1.2
 script = ExtResource("19_jj5cj")
-step_paritcle = ExtResource("3_6i83m")
+step_paritcle = ExtResource("20_de0kk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)

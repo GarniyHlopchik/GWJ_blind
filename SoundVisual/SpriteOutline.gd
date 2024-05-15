@@ -19,10 +19,10 @@ func _sound_entered(area: Area2D):
 	if(!line): 
 		line = parent
 		return;
-	var current_procent = line.lifetime
-	var parent_procent = parent.lifetime
-	#print("%s > %s = %s" % [parent_procent, current_procent, parent_procent > current_procent])
-	if(line.lifetime > parent.lifetime):
+	#var current_procent = line.lifetime
+	#var parent_procent = parent.lifetime
+	#print("%s > %s = %s" % [line.lifetime, parent.lifetime, line.lifetime > parent.lifetime])
+	if(parent.lifetime > line.lifetime):
 		line = parent
 	
 func _process(delta: float) -> void:

@@ -5,6 +5,10 @@ class_name Player
 @export var speed = 150.0
 
 var direction: Vector2;
+
+func _process(delta: float) -> void:
+	PlayerState.position = global_position;
+
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("Left", "Right", "Up", "Down")
 	direction = direction.normalized()

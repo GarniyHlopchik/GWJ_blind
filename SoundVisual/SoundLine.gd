@@ -3,7 +3,7 @@ class_name SoundLine
 
 var sound: SoundVisual;
 var rays: Array[Node];
-const PARTICLE_POINT = preload("res://SoundVisual/particle_point.tscn")
+const PARTICLE_POINT = preload("res://SoundVisual/SoundPoint.tscn")
 var audio_node: AudioStreamPlayer2D
 
 func _ready() -> void:

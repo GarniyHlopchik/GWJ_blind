@@ -3,7 +3,11 @@ class_name SitTimer
 
 @onready var player: Player = $".."
 
-var is_sit: bool;
+var is_sit: bool:
+	get:
+		return PlayerState.is_sit;
+	set(value):
+		PlayerState.is_sit = value;
 signal on_sit();
 signal on_get_up();
 
