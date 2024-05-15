@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=32 format=3 uid="uid://nafn1aysv3bb"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_ddj2j"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ddj2j"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://VisualSounds/Chord.tres" id="2_0mq75"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://VisualSounds/Step.tres" id="3_6i83m"]
 [ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://VisualSounds/Notes/1 D.tres" id="4_76v3q"]
@@ -16,17 +16,19 @@
 [ext_resource type="Resource" uid="uid://bxeem133rbk56" path="res://VisualSounds/Notes/9 D.tres" id="12_xoqwp"]
 [ext_resource type="Resource" uid="uid://bikqkx1cslb0a" path="res://VisualSounds/Notes/10 E.tres" id="13_alj3e"]
 [ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://VisualSounds/Notes/11 F#.tres" id="14_noaal"]
-[ext_resource type="Script" path="res://blade.gd" id="16_j0q56"]
+[ext_resource type="Script" path="res://Player/SitTimer.gd" id="15_07xxq"]
+[ext_resource type="Script" path="res://Player/Chord.gd" id="16_2hsuj"]
+[ext_resource type="Script" path="res://Player/Blade.gd" id="16_j0q56"]
 [ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="17_h3t5y"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
 [ext_resource type="Script" path="res://SoundVisual/SpriteOutline.gd" id="18_jvyfl"]
+[ext_resource type="Script" path="res://Player/Notes.gd" id="18_rqeu1"]
+[ext_resource type="Script" path="res://Player/Animator.gd" id="19_jj5cj"]
+[ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
+[ext_resource type="Script" path="res://Player/MusicFade.gd" id="26_2kq0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
-radius = 18.0
-height = 74.0
 
 [sub_resource type="Animation" id="Animation_s0pgx"]
 length = 0.001
@@ -63,7 +65,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..")
+tracks/1/path = NodePath("../AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,10 +73,10 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"_on_step_timer_timeout"
+"method": &"step"
 }, {
 "args": [],
-"method": &"_on_step_timer_timeout"
+"method": &"step"
 }]
 }
 
@@ -84,13 +86,14 @@ _data = {
 "walk": SubResource("Animation_ooot5")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
+radius = 18.0
+height = 74.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 250.0
-chord_particle = ExtResource("2_0mq75")
-step_paritcle = ExtResource("3_6i83m")
-notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_k7ol8"), ExtResource("10_24dym"), ExtResource("11_4675i"), ExtResource("12_xoqwp"), ExtResource("13_alj3e"), ExtResource("14_noaal")])
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
@@ -108,14 +111,31 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sb2fr")
 
-[node name="chord_cooldown" type="Timer" parent="."]
-wait_time = 0.5
+[node name="sit_timer" type="Timer" parent="."]
+wait_time = 2.0
+script = ExtResource("15_07xxq")
 
-[node name="step_timer" type="Timer" parent="."]
-wait_time = 0.3
+[node name="chord_cooldown" type="Timer" parent="."]
+wait_time = 0.6
+script = ExtResource("16_2hsuj")
+chord_particle = ExtResource("2_0mq75")
+
+[node name="notes" type="Node2D" parent="."]
+script = ExtResource("18_rqeu1")
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("4_76v3q"), ExtResource("5_t1w4f"), ExtResource("6_illfk"), ExtResource("7_mo7sm"), ExtResource("8_0st4q"), ExtResource("9_k7ol8"), ExtResource("10_24dym"), ExtResource("11_4675i"), ExtResource("12_xoqwp"), ExtResource("13_alj3e"), ExtResource("14_noaal")])
 
 [node name="sound_emiter" type="Node2D" parent="."]
 script = ExtResource("5_o25cj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_gby43")
+}
+autoplay = "walk"
+speed_scale = 1.2
+script = ExtResource("19_jj5cj")
+step_paritcle = ExtResource("3_6i83m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
@@ -133,14 +153,6 @@ script = ExtResource("18_jvyfl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8p4u6")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_gby43")
-}
-autoplay = "walk"
-speed_scale = 1.2
 
 [node name="blade" type="Area2D" parent="."]
 position = Vector2(0, -48)
@@ -163,8 +175,12 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_evxge")
+autoplay = true
+script = ExtResource("26_2kq0c")
+
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
-[connection signal="timeout" from="chord_cooldown" to="." method="_on_chord_cooldown_timeout"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
 [connection signal="timeout" from="blade/attack_cooldown" to="blade" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="blade/attack_duration" to="blade" method="_on_attack_duration_timeout"]
