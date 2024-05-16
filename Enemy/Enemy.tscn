@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ranetadpnm52"]
+[gd_scene load_steps=10 format=3 uid="uid://ranetadpnm52"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_vmxwv"]
 [ext_resource type="Script" path="res://Enemy/step_timer.gd" id="2_pfdwd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_n7ht6"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="5_acww8"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="6_ktc2i"]
+[ext_resource type="Script" path="res://Character/HealthComponent.gd" id="7_6h10u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
 radius = 15.0
@@ -36,6 +37,7 @@ script = ExtResource("2_pfdwd")
 step_sound = ExtResource("3_ap6ei")
 
 [node name="sound_emiter" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_n7ht6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -53,5 +55,14 @@ collision_mask = 2
 script = ExtResource("6_ktc2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")
+
+[node name="health_component" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("7_6h10u")
+
+[node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8vo1v")

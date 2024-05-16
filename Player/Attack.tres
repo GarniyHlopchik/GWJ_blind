@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bcvscdna3tykw"]
+
+[ext_resource type="Script" path="res://Character/AttackInfo.gd" id="1_bjm80"]
+
+[resource]
+script = ExtResource("1_bjm80")
+damage = 30
+knockback_strength = 200.0
+knockback_time = 0.5

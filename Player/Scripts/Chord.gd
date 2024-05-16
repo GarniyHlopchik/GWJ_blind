@@ -1,7 +1,7 @@
 extends Timer
 
 @export var chord_particle: SoundVisual;
-@onready var sound_emiter: VisualSoundEmiter = $"../sound_emiter"
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 var chord_ready = true;
 
 func _process(delta: float) -> void:

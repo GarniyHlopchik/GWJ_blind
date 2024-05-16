@@ -3,7 +3,7 @@ extends AnimationPlayer
 @export var step_paritcle: SoundVisual;
 @onready var player: Player = $".."
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
-@onready var sound_emiter: VisualSoundEmiter = $"../sound_emiter"
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 
 var prev_direction: bool;
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sound_emiter: VisualSoundEmiter = $"../sound_emiter"
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 @onready var sit_timer: SitTimer = $"../sit_timer"
 @export var notes_audio: Array[SoundVisual];
 

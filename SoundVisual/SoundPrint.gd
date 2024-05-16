@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	match lifetime_type:
 		LifetimeType.INSTANT:
 			var areas = get_overlapping_areas()
-			if(areas.size() > 0):
+			if(areas.size() > 0 && is_instance_valid(line)):
 				sprite.modulate.a = 1 * line.default_color.a;
 				fading = 0;
 			else:

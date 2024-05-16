@@ -1,7 +1,7 @@
 extends Timer
 
 @export var step_sound: SoundVisual;
-@onready var sound_emiter: VisualSoundEmiter = $"../sound_emiter"
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 @onready var enemy: Enemy = $".."
 
 func _ready() -> void:

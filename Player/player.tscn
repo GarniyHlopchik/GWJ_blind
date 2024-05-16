@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=35 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
@@ -24,9 +24,10 @@
 [ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
 [ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
+[ext_resource type="Resource" uid="uid://bcvscdna3tykw" path="res://Player/Attack.tres" id="24_pfmrp"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
-[ext_resource type="Script" path="res://health_component.gd" id="27_25wlk"]
+[ext_resource type="Script" path="res://Player/Scripts/PlayerHealth.gd" id="27_eqdtn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -132,6 +133,7 @@ script = ExtResource("18_rqeu1")
 notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("17_tped4")])
 
 [node name="sound_emiter" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("5_o25cj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -163,9 +165,10 @@ shape = SubResource("CapsuleShape2D_8p4u6")
 
 [node name="blade" type="Area2D" parent="."]
 position = Vector2(0, -48)
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 script = ExtResource("16_j0q56")
+attack_info = ExtResource("24_pfmrp")
 
 [node name="hit_area" type="CollisionPolygon2D" parent="blade"]
 polygon = PackedVector2Array(0, 0, 125, 20, 125, -20)
@@ -191,9 +194,8 @@ script = ExtResource("26_2kq0c")
 
 [node name="health_component" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 8
-script = ExtResource("27_25wlk")
-max_hp = 100
+collision_mask = 0
+script = ExtResource("27_eqdtn")
 
 [node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)
