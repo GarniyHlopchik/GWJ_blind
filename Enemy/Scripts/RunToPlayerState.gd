@@ -5,20 +5,23 @@ extends StateBase
 @export var close_distance: float = 125;
 @export var when_close_state: StateBase;
 @export var lost_interest_state: StateBase;
+
+@export_group("Animation and sounds")
+@export var animation: String = "run";
 @export var step_sound: SoundVisual;
+@onready var animator: AnimationPlayer = %animator
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter;
 
 @onready var interest_time: Timer = $interest_time
 @onready var step_timer: Timer = $step_timer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
-var state_machine: EnemyStateMachine
-
-
 
 func enter(object: EnemyStateMachine):
-	state_machine = object;
+	super.enter(object);
 	interest_time.start();
 	step_timer.start()
+	if(animator && animation):
+		animator.play(animation);
 	
 func exit():
 	interest_time.stop();

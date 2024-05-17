@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name EnemyStateMachine
 
 @export var begining_state: StateBase
+@export var any_states: Array[ConditionalStateBase];
 var _current_state: StateBase;
 
 func _ready() -> void:
@@ -16,7 +17,10 @@ func change_state(state: StateBase):
 	
 
 func _process(delta: float) -> void:
-	#print(_current_state)
+	for state in any_states:
+		if(state.condition() && _current_state != state):
+			change_state(state);
+	
 	_current_state.process(delta);
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

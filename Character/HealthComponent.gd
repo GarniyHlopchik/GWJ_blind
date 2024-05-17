@@ -4,7 +4,7 @@ class_name HealthComponent
 @export var hp: int = 100;
 @export var max_hp: int = 100;
 signal on_death;
-signal on_take_damage(attak_info);
+signal on_take_damage(attack_info);
 
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 
@@ -22,6 +22,7 @@ func _ready() -> void:
 	);
 
 func deal_damage(attack_info: AttackInfo):
+	if(!attack_info): return;
 	on_take_damage.emit(attack_info);
 	
 func _take_damage(attack_info: AttackInfo):

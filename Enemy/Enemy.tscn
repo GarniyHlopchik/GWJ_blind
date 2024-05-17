@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ranetadpnm52"]
+[gd_scene load_steps=16 format=3 uid="uid://ranetadpnm52"]
 
 [ext_resource type="Script" path="res://Enemy/Scripts/EnemyStateMachine.gd" id="1_5ct4y"]
 [ext_resource type="Script" path="res://Enemy/Scripts/IdleState.gd" id="2_qrnfr"]
@@ -6,21 +6,26 @@
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_n7ht6"]
 [ext_resource type="Script" path="res://Enemy/Scripts/RunToPlayerState.gd" id="3_yrbvk"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="5_acww8"]
+[ext_resource type="Script" path="res://Enemy/Scripts/PreparingState.gd" id="5_tdd16"]
+[ext_resource type="Script" path="res://Enemy/Scripts/JumpAttackState.gd" id="6_0lfr2"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="6_ktc2i"]
 [ext_resource type="Script" path="res://Character/HealthComponent.gd" id="7_6h10u"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
-radius = 15.0
+[ext_resource type="Script" path="res://Enemy/Scripts/KnockedState.gd" id="7_54l72"]
+[ext_resource type="Resource" uid="uid://cjeq0xkgjm6pk" path="res://Enemy/Attack.tres" id="7_cluae"]
+[ext_resource type="Script" path="res://Enemy/Scripts/DeathState.gd" id="8_nklwy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
 radius = 18.0
 height = 74.0
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("begining_state")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
+radius = 15.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("begining_state", "any_states")]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_5ct4y")
 begining_state = NodePath("states/idle")
+any_states = [NodePath("states/death"), NodePath("states/knocked")]
 
 [node name="states" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -37,7 +42,7 @@ collision_mask = 5
 [node name="run" type="Node2D" parent="states" node_paths=PackedStringArray("navigation_agent", "when_close_state", "lost_interest_state")]
 script = ExtResource("3_yrbvk")
 navigation_agent = NodePath("../../NavigationAgent2D")
-when_close_state = NodePath("../idle")
+when_close_state = NodePath("../preparing")
 lost_interest_state = NodePath("../idle")
 step_sound = ExtResource("3_ap6ei")
 
@@ -52,6 +57,39 @@ autostart = true
 [node name="interest_time" type="Timer" parent="states/run"]
 wait_time = 7.0
 one_shot = true
+
+[node name="preparing" type="Node2D" parent="states" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_tdd16")
+next_state = NodePath("../attack")
+animation = "pre"
+
+[node name="Timer" type="Timer" parent="states/preparing"]
+wait_time = 0.5
+one_shot = true
+
+[node name="attack" type="Node2D" parent="states" node_paths=PackedStringArray("after_attack_state")]
+script = ExtResource("6_0lfr2")
+attack_info = ExtResource("7_cluae")
+after_attack_state = NodePath("../idle")
+
+[node name="Timer" type="Timer" parent="states/attack"]
+one_shot = true
+
+[node name="hit_area" type="Area2D" parent="states/attack"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="hit_collision" type="CollisionShape2D" parent="states/attack/hit_area"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")
+
+[node name="knocked" type="Node2D" parent="states" node_paths=PackedStringArray("state_after")]
+script = ExtResource("7_54l72")
+state_after = NodePath("../run")
+
+[node name="death" type="Node2D" parent="states" node_paths=PackedStringArray("health_component")]
+script = ExtResource("8_nklwy")
+health_component = NodePath("../../health_component")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
@@ -85,6 +123,9 @@ script = ExtResource("6_ktc2i")
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8vo1v")
 
+[node name="animator" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+
 [node name="health_component" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
@@ -98,3 +139,7 @@ shape = SubResource("CapsuleShape2D_8vo1v")
 
 [connection signal="timeout" from="states/run/step_timer" to="states/run" method="_on_step_timer_timeout"]
 [connection signal="timeout" from="states/run/interest_time" to="states/run" method="_on_invoke_time_timeout"]
+[connection signal="timeout" from="states/preparing/Timer" to="states/preparing" method="timer_timeout"]
+[connection signal="timeout" from="states/attack/Timer" to="states/attack" method="_on_timer_timeout"]
+[connection signal="area_entered" from="states/attack/hit_area" to="states/attack" method="_on_hit_area_area_entered"]
+[connection signal="on_take_damage" from="health_component" to="states/knocked" method="on_take_damage"]
