@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bcvscdna3tykw"]
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=3 format=3 uid="uid://bcvscdna3tykw"]
 
 [ext_resource type="Script" path="res://Character/AttackInfo.gd" id="1_bjm80"]
+[ext_resource type="Resource" uid="uid://bauw7htp4aqjn" path="res://Player/VisualSounds/Attack.tres" id="2_o188q"]
 
 [resource]
 script = ExtResource("1_bjm80")
-damage = 30
+damage = 1
 knockback_strength = 200.0
-knockback_time = 0.5
+knockback_time = 0.7
+sound_visual = ExtResource("2_o188q")

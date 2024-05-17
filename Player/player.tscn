@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=46 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
@@ -18,16 +18,21 @@
 [ext_resource type="Resource" uid="uid://bikqkx1cslb0a" path="res://Player/VisualSounds/Notes/10 E.tres" id="16_88oet"]
 [ext_resource type="Script" path="res://Player/Scripts/Blade.gd" id="16_j0q56"]
 [ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="17_h3t5y"]
-[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="17_psbc7"]
+[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="17_psbc7"]
 [ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F#.tres" id="17_tped4"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="18_jvyfl"]
+[ext_resource type="Resource" uid="uid://bpty6xo1iifjn" path="res://Player/VisualSounds/Pattern.tres" id="18_p3aeu"]
 [ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
 [ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
+[ext_resource type="Texture2D" uid="uid://ejmaq1wy35m2" path="res://Sprites/Player/idle.png" id="21_6jvjt"]
+[ext_resource type="Texture2D" uid="uid://rp6wwsq1cjpo" path="res://Sprites/Player/attack.png" id="22_5ds4y"]
 [ext_resource type="Resource" uid="uid://bcvscdna3tykw" path="res://Player/Attack.tres" id="24_pfmrp"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerHealth.gd" id="27_eqdtn"]
+[ext_resource type="Script" path="res://Player/Scripts/BladeAnimator.gd" id="28_nlbe3"]
+[ext_resource type="Texture2D" uid="uid://c3qjeq4b1o25u" path="res://Sprites/Player/sword.png" id="28_um6wv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -45,6 +50,114 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_psbc7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_6fx67"]
+resource_name = "attack"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_5ds4y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3he5b"]
+resource_name = "idle"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("21_6jvjt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_ooot5"]
@@ -81,16 +194,98 @@ tracks/1/keys = {
 "method": &"step"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_psbc7")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
 _data = {
 "RESET": SubResource("Animation_s0pgx"),
+"attack": SubResource("Animation_6fx67"),
+"idle": SubResource("Animation_3he5b"),
 "walk": SubResource("Animation_ooot5")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p4u6"]
 radius = 18.0
 height = 74.0
+
+[sub_resource type="Animation" id="Animation_3w8ks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hpif2"]
+resource_name = "default"
+length = 0.333342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end_attack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1tlk"]
+_data = {
+"RESET": SubResource("Animation_3w8ks"),
+"default": SubResource("Animation_hpif2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyt8k"]
+radius = 1.6
+height = 10.8
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_divfl"]
 radius = 18.0
@@ -101,7 +296,7 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
-speed = 250.0
+speed = 300.0
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
@@ -131,6 +326,7 @@ chord_particle = ExtResource("5_kpy64")
 [node name="notes" type="Node2D" parent="."]
 script = ExtResource("18_rqeu1")
 notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("17_tped4")])
+correct_pattern_audio = ExtResource("18_p3aeu")
 
 [node name="sound_emiter" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -164,11 +360,24 @@ position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8p4u6")
 
 [node name="blade" type="Area2D" parent="."]
-position = Vector2(0, -48)
+position = Vector2(-10, -32)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("16_j0q56")
 attack_info = ExtResource("24_pfmrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="blade"]
+visible = false
+z_index = 1
+scale = Vector2(0.043, 0.043)
+texture = ExtResource("17_h3t5y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="blade"]
+root_node = NodePath("../smear")
+libraries = {
+"": SubResource("AnimationLibrary_v1tlk")
+}
+script = ExtResource("28_nlbe3")
 
 [node name="hit_area" type="CollisionPolygon2D" parent="blade"]
 polygon = PackedVector2Array(0, 0, 125, 20, 125, -20)
@@ -176,11 +385,24 @@ disabled = true
 
 [node name="smear" type="Sprite2D" parent="blade"]
 visible = false
-position = Vector2(115, 0)
-scale = Vector2(0.15, 0.59)
-texture = ExtResource("17_h3t5y")
+position = Vector2(41, -6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_um6wv")
+hframes = 4
+
+[node name="Area2D" type="Area2D" parent="blade/smear"]
+scale = Vector2(25, 25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_jvyfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blade/smear/Area2D"]
+position = Vector2(-4, 1.4)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_iyt8k")
 
 [node name="attack_cooldown" type="Timer" parent="blade"]
+wait_time = 0.5
 one_shot = true
 
 [node name="attack_duration" type="Timer" parent="blade"]
@@ -196,6 +418,8 @@ script = ExtResource("26_2kq0c")
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("27_eqdtn")
+hp = 3
+max_hp = 3
 
 [node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)
@@ -204,5 +428,9 @@ shape = SubResource("CapsuleShape2D_divfl")
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
 [connection signal="area_entered" from="blade" to="blade" method="_on_area_entered"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
+[connection signal="on_attack_ended" from="blade" to="AnimationPlayer" method="_handle_attack_ended"]
+[connection signal="on_attack_ended" from="blade" to="blade/AnimationPlayer" method="_handle_attack_ended"]
+[connection signal="on_attack_started" from="blade" to="AnimationPlayer" method="_handle_attack_started"]
+[connection signal="on_attack_started" from="blade" to="blade/AnimationPlayer" method="_handle_attack_started"]
 [connection signal="timeout" from="blade/attack_cooldown" to="blade" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="blade/attack_duration" to="blade" method="_on_attack_duration_timeout"]

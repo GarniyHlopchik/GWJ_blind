@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ranetadpnm52"]
+[gd_scene load_steps=11 format=3 uid="uid://ranetadpnm52"]
 
-[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_vmxwv"]
-[ext_resource type="Script" path="res://Enemy/step_timer.gd" id="2_pfdwd"]
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyStateMachine.gd" id="1_5ct4y"]
+[ext_resource type="Script" path="res://Enemy/Scripts/IdleState.gd" id="2_qrnfr"]
 [ext_resource type="Resource" uid="uid://dysn8brf1q41w" path="res://Enemy/VisualSounds/Step.tres" id="3_ap6ei"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_n7ht6"]
-[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/mc_walk_ss.png" id="5_acww8"]
+[ext_resource type="Script" path="res://Enemy/Scripts/RunToPlayerState.gd" id="3_yrbvk"]
+[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="5_acww8"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="6_ktc2i"]
 [ext_resource type="Script" path="res://Character/HealthComponent.gd" id="7_6h10u"]
 
@@ -15,10 +16,42 @@ radius = 15.0
 radius = 18.0
 height = 74.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("begining_state")]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_vmxwv")
+script = ExtResource("1_5ct4y")
+begining_state = NodePath("states/idle")
+
+[node name="states" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="idle" type="Node2D" parent="states" node_paths=PackedStringArray("collision_shape_2d", "player_detected_state")]
+script = ExtResource("2_qrnfr")
+collision_shape_2d = NodePath("../../CollisionShape2D")
+player_detected_state = NodePath("../run")
+
+[node name="RayCast2D" type="RayCast2D" parent="states/idle"]
+target_position = Vector2(1, 100)
+collision_mask = 5
+
+[node name="run" type="Node2D" parent="states" node_paths=PackedStringArray("navigation_agent", "when_close_state", "lost_interest_state")]
+script = ExtResource("3_yrbvk")
+navigation_agent = NodePath("../../NavigationAgent2D")
+when_close_state = NodePath("../idle")
+lost_interest_state = NodePath("../idle")
+step_sound = ExtResource("3_ap6ei")
+
+[node name="RayCast2D" type="RayCast2D" parent="states/run"]
+target_position = Vector2(1, 100)
+collision_mask = 5
+
+[node name="step_timer" type="Timer" parent="states/run"]
+wait_time = 0.4
+autostart = true
+
+[node name="interest_time" type="Timer" parent="states/run"]
+wait_time = 7.0
+one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
@@ -29,12 +62,6 @@ avoidance_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y4fym")
-
-[node name="step_timer" type="Timer" parent="."]
-wait_time = 0.4
-autostart = true
-script = ExtResource("2_pfdwd")
-step_sound = ExtResource("3_ap6ei")
 
 [node name="sound_emiter" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -62,7 +89,12 @@ shape = SubResource("CapsuleShape2D_8vo1v")
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("7_6h10u")
+hp = 3
+max_hp = 3
 
 [node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_8vo1v")
+
+[connection signal="timeout" from="states/run/step_timer" to="states/run" method="_on_step_timer_timeout"]
+[connection signal="timeout" from="states/run/interest_time" to="states/run" method="_on_invoke_time_timeout"]

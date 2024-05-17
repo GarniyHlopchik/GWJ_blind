@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://bpty6xo1iifjn"]
+
+[ext_resource type="AudioStream" uid="uid://4mptywh2o6qa" path="res://Audio/Instrument/correct_pattern.ogg" id="1_ry53q"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="23_6s0s6"]
+
+[resource]
+script = ExtResource("23_6s0s6")
+audio = Array[AudioStream]([ExtResource("1_ry53q")])
+color = Color(0, 1, 0, 1)
+width = 2
+lifetime = 2.0
+fadetime = 2.0
+speed = 500.0
