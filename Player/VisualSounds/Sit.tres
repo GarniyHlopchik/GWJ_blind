@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://bun62midvxy5f"]
+
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_vs6xb"]
+
+[resource]
+script = ExtResource("1_vs6xb")
+audio = Array[AudioStream]([])
+color = Color(0, 0, 0, 1)
+width = 0.5
+lifetime = 0.0
+fadetime = 0.1
+speed = 500.0

@@ -46,4 +46,4 @@ layer_0/tile_data = PackedInt32Array(-65537, 0, 65536, -131072, 0, 65536, -13107
 occluder = SubResource("OccluderPolygon2D_rryr0")
 
 [node name="DashingEnemy" parent="." instance=ExtResource("4_5n1m0")]
-position = Vector2(914, 226)
+position = Vector2(983, -380)

@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		return;
 	direction = Input.get_vector("Left", "Right", "Up", "Down")
 	direction = direction.normalized()
+	if !can_move: return;
 	#print("%s %s" % [direction, direction.length()]);
 	
 	#acceleration
@@ -50,3 +51,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		tween.tween_property(self,"velocity",Vector2.ZERO,acceleration_time)
 	move_and_slide()
+
+var can_move: bool = true;
+
+func _got_up():
+	can_move = true;
+
+func _on_sit() -> void:
+	can_move = false

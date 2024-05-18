@@ -8,12 +8,14 @@ var attac_dir: Vector2
 var can_attack = true
 @export var attack_info: AttackInfo;
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
+@onready var player: Player = $".."
 
 func _process(delta: float) -> void:
 	attac_dir = global_position.direction_to(get_global_mouse_position())
 	look_at(get_global_mouse_position())
 	
 func _input(event: InputEvent) -> void:
+	if(!player.can_move): return;
 	if Input.is_action_just_pressed("Attack") and can_attack:
 		on_attack_started.emit();
 		can_attack = false

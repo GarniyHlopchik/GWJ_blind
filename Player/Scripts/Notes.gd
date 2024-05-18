@@ -4,6 +4,7 @@ extends Node2D
 @onready var sit_timer: SitTimer = $"../sit_timer"
 @export var notes_audio: Array[SoundVisual];
 @export var correct_pattern_audio: SoundVisual;
+@onready var animation_player: AnimationPlayer = $"../blade/AnimationPlayer"
 
 const pattern: Array[int] = [5,5,7,5,6,7,6,5,4,1,5,6,7,6,5,5,5,8,5,7,6,5,4,5,1,5,6,7,6,5,3]
 
@@ -14,6 +15,7 @@ func _process(delta: float) -> void:
 		return;
 	if(!Input.is_action_just_pressed("Any_note")):
 		return;
+	animation_player.play("play_sitting")
 	for i in notes_audio.size():
 		if(Input.is_action_just_pressed("Note_%s" % (i+1))):
 			sound_emiter.emit_wave(notes_audio[i]);
