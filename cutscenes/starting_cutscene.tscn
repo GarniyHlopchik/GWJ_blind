@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbll60aksswqu"]
+
+[ext_resource type="Script" path="res://cutscenes/cutscene.gd" id="1_fflht"]
+[ext_resource type="PackedScene" uid="uid://brsh51xj48qq7" path="res://TestScene.tscn" id="2_ckmkm"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_s6cvk"]
+file = "SCUM.ogg"
+
+[node name="starting_cutscene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_s6cvk")
+autoplay = true
+script = ExtResource("1_fflht")
+stop_points = Array[float]([1.0, 2.0, 4.0])
+scene_to_load = ExtResource("2_ckmkm")
+
+[connection signal="finished" from="CanvasLayer/VideoStreamPlayer" to="CanvasLayer/VideoStreamPlayer" method="_on_finished"]
