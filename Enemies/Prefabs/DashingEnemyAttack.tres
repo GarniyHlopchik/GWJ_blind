@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=3 format=3 uid="uid://do6fystm5jwxo"]
+
+[ext_resource type="Script" path="res://Character/AttackInfo.gd" id="1_330dw"]
+[ext_resource type="Resource" uid="uid://kp0ih33lu0xd" path="res://Enemies/VisualSounds/DamagedPlayer.tres" id="2_4qsyq"]
+
+[resource]
+script = ExtResource("1_330dw")
+damage = 2
+knockback_strength = 3.0
+knockback_time = 0.5
+sound_visual = ExtResource("2_4qsyq")

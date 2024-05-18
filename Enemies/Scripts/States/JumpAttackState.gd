@@ -15,7 +15,6 @@ extends StateBase
 @onready var hit_area: Area2D = $hit_area
 @onready var hit_collision: CollisionShape2D = $hit_area/hit_collision
 
-var _can_damage: bool
 var velocity_dir: Vector2;
 
 func enter(object: EnemyStateMachine):
@@ -24,10 +23,9 @@ func enter(object: EnemyStateMachine):
 		animator.play(animation);
 	if(sound_emiter && sound):
 		sound_emiter.emit_wave(sound);
-	_can_damage = true;
+	hit_collision.disabled = false;
 	timer.start()
 	velocity_dir = (PlayerState.position - state_machine.global_position) * attack_force
-	hit_collision.disabled = false;
 	
 func physics_process(delta: float):
 	state_machine.velocity = velocity_dir;
@@ -38,6 +36,7 @@ func _on_hit_area_area_entered(area: Area2D) -> void:
 	if(area is HealthComponent):
 		var health = area as HealthComponent;
 		health.deal_damage(attack_info);
+		hit_collision.disabled = true;
 
 func _on_timer_timeout() -> void:
 	state_machine.change_state(after_attack_state)

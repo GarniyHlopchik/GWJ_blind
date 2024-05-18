@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brsh51xj48qq7"]
+[gd_scene load_steps=9 format=3 uid="uid://brsh51xj48qq7"]
 
 [ext_resource type="PackedScene" uid="uid://chycdm7t57bej" path="res://wall.tscn" id="1_nkvkp"]
 [ext_resource type="PackedScene" uid="uid://nafn1aysv3bb" path="res://Player/player.tscn" id="1_ti5pg"]
-[ext_resource type="PackedScene" uid="uid://ranetadpnm52" path="res://Enemy/Enemy.tscn" id="2_uod6x"]
+[ext_resource type="PackedScene" uid="uid://ranetadpnm52" path="res://Enemies/Prefabs/JumpingEnemy.tscn" id="2_uod6x"]
+[ext_resource type="PackedScene" uid="uid://bbl0vnywqdhfh" path="res://Enemies/Prefabs/DashingEnemy.tscn" id="4_5n1m0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqxlx"]
 vertices = PackedVector2Array(314, -79, 314, -149, 324, -159, 324, 41, -86, 161, -86, 51, -76, 91, -76, 241, -46, -159, 124, -149, 444, 41, 444, 171, 434, 161, 434, 51, 284, 51, 244, 171, 284, 161, 1287, -538, 1177, 824, 514, 241, 514, -29, 394, -29, 394, -229, -1089, -500, -116, -229, -852, 766, -236, -29, -116, -29, -236, 241, -156, 241, -156, 321, 4, 321, 4, 361, 154, 291, 74, 291, 74, 281, 114, 281, 124, -109, 114, -109, 114, -149, 44, -149, 44, -109, -36, -109, -46, 41, -36, 91, -166, 41, -156, 51, -166, 171, -156, 161, -86, 171, -86, 251, 4, 251, -6, 241, 4, 171, -6, 161, 84, 161, 74, 171, 84, 201, 74, 211, 114, 211, 154, 201, 74, 51, 34, 51, 34, -39, 84, -39, 84, 81, 74, 91, 154, 91, 154, 81, 314, 1, 274, 1, 274, 161, 234, 161, 234, 281, 244, 291, 164, 291, 124, 281, 314, 361, 314, 241, 154, 361, 164, 361, 124, 211, 164, 211, 164, 51, 154, 41, 194, 41, 204, 51, 204, -69, 194, -79, 314, -69)
@@ -26,7 +27,7 @@ polygon = PackedVector2Array(-299, -172, -294.742, -198.8, -282, -279, -96, -298
 [node name="TestScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ti5pg")]
-position = Vector2(-188, -46)
+position = Vector2(508, -71)
 
 [node name="Enemy" parent="." instance=ExtResource("2_uod6x")]
 position = Vector2(-474, -153)
@@ -43,3 +44,6 @@ layer_0/tile_data = PackedInt32Array(-65537, 0, 65536, -131072, 0, 65536, -13107
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_rryr0")
+
+[node name="DashingEnemy" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(914, 226)

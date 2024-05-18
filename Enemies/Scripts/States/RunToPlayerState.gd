@@ -5,6 +5,7 @@ extends StateBase
 @export var close_distance: float = 125;
 @export var when_close_state: StateBase;
 @export var lost_interest_state: StateBase;
+@export var min_walking_time: float;
 
 @export_group("Animation and sounds")
 @export var animation: String = "run";
@@ -15,6 +16,9 @@ extends StateBase
 @onready var interest_time: Timer = $interest_time
 @onready var step_timer: Timer = $step_timer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var min_walking_timer: Timer = $min_walking_timer
+
+var can_attack = true;
 
 func enter(object: EnemyStateMachine):
 	super.enter(object);
@@ -22,6 +26,9 @@ func enter(object: EnemyStateMachine):
 	step_timer.start()
 	if(animator && animation):
 		animator.play(animation);
+	if(min_walking_time > 0):
+		can_attack = false;
+		min_walking_timer.start(min_walking_time);
 	
 func exit():
 	interest_time.stop();
@@ -72,7 +79,7 @@ func physics_process(delta: float) -> void:
 	
 	var current_agent_position: Vector2 = state_machine.global_position;
 	if(current_agent_position.distance_to(PlayerState.position) < close_distance && 
-		is_seeing_player):
+		is_seeing_player && can_attack):
 		state_machine.change_state(when_close_state);
 		return;
 		
@@ -81,3 +88,7 @@ func physics_process(delta: float) -> void:
 	state_machine.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	
 	state_machine.move_and_slide();
+
+
+func _on_min_walking_timer_timeout() -> void:
+	can_attack = true;

@@ -1,0 +1,158 @@
+[gd_scene load_steps=16 format=3 uid="uid://bbl0vnywqdhfh"]
+
+[ext_resource type="Script" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="1_4a27i"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/IdleState.gd" id="2_v4t3i"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/RunToPlayerState.gd" id="3_pakbp"]
+[ext_resource type="Resource" uid="uid://dysn8brf1q41w" path="res://Enemies/VisualSounds/Step.tres" id="4_6unt0"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/PreparingState.gd" id="5_68egx"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/LongDashAttackState.gd" id="6_16vcv"]
+[ext_resource type="Resource" uid="uid://do6fystm5jwxo" path="res://Enemies/Prefabs/DashingEnemyAttack.tres" id="7_qwemu"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/KnockedState.gd" id="8_rqal0"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/DeathState.gd" id="9_mbqj3"]
+[ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="10_rkb0h"]
+[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="11_rryj6"]
+[ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="12_skmhi"]
+[ext_resource type="Script" path="res://Character/HealthComponent.gd" id="13_xugx1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
+radius = 18.0
+height = 74.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
+radius = 15.0
+
+[node name="DashingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("begining_state", "any_states")]
+collision_layer = 4
+script = ExtResource("1_4a27i")
+begining_state = NodePath("states/idle")
+any_states = [NodePath("states/death"), NodePath("states/knocked")]
+
+[node name="states" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="idle" type="Node2D" parent="states" node_paths=PackedStringArray("collision_shape_2d", "player_detected_state")]
+script = ExtResource("2_v4t3i")
+collision_shape_2d = NodePath("../../CollisionShape2D")
+player_detected_state = NodePath("../walk")
+see_distance = 300.0
+
+[node name="RayCast2D" type="RayCast2D" parent="states/idle"]
+collision_mask = 5
+
+[node name="walk" type="Node2D" parent="states" node_paths=PackedStringArray("navigation_agent", "when_close_state", "lost_interest_state")]
+script = ExtResource("3_pakbp")
+navigation_agent = NodePath("../../NavigationAgent2D")
+movement_speed = 50.0
+close_distance = 300.0
+when_close_state = NodePath("../preparing")
+lost_interest_state = NodePath("../idle")
+min_walking_time = 1.5
+step_sound = ExtResource("4_6unt0")
+
+[node name="RayCast2D" type="RayCast2D" parent="states/walk"]
+collision_mask = 5
+
+[node name="step_timer" type="Timer" parent="states/walk"]
+wait_time = 0.8
+autostart = true
+
+[node name="min_walking_timer" type="Timer" parent="states/walk"]
+one_shot = true
+
+[node name="interest_time" type="Timer" parent="states/walk"]
+wait_time = 7.0
+one_shot = true
+
+[node name="preparing" type="Node2D" parent="states" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_68egx")
+next_state = NodePath("../attack")
+animation = "pre"
+
+[node name="Timer" type="Timer" parent="states/preparing"]
+wait_time = 0.5
+one_shot = true
+
+[node name="attack" type="Node2D" parent="states" node_paths=PackedStringArray("after_attack_state")]
+script = ExtResource("6_16vcv")
+attack_speed = 500.0
+after_attack_state = NodePath("../walk")
+attack_info = ExtResource("7_qwemu")
+
+[node name="step_timer" type="Timer" parent="states/attack"]
+wait_time = 0.2
+one_shot = true
+
+[node name="duration_timer" type="Timer" parent="states/attack"]
+one_shot = true
+
+[node name="hit_area" type="Area2D" parent="states/attack"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="hit_collision" type="CollisionShape2D" parent="states/attack/hit_area"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")
+disabled = true
+
+[node name="knocked" type="Node2D" parent="states" node_paths=PackedStringArray("state_after")]
+script = ExtResource("8_rqal0")
+state_after = NodePath("../walk")
+
+[node name="death" type="Node2D" parent="states" node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_mbqj3")
+health_component = NodePath("../../health_component")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_max_distance = 1000.0
+avoidance_layers = 0
+avoidance_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y4fym")
+
+[node name="sound_emiter" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_rkb0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(0, -40)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_rryj6")
+hframes = 6
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 200)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_skmhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")
+
+[node name="animator" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+
+[node name="health_component" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("13_xugx1")
+hp = 6
+max_hp = 6
+
+[node name="hitbox" type="CollisionShape2D" parent="health_component"]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_8vo1v")
+
+[connection signal="timeout" from="states/walk/step_timer" to="states/walk" method="_on_step_timer_timeout"]
+[connection signal="timeout" from="states/walk/min_walking_timer" to="states/walk" method="_on_min_walking_timer_timeout"]
+[connection signal="timeout" from="states/walk/interest_time" to="states/walk" method="_on_invoke_time_timeout"]
+[connection signal="timeout" from="states/preparing/Timer" to="states/preparing" method="timer_timeout"]
+[connection signal="timeout" from="states/attack/step_timer" to="states/attack" method="step"]
+[connection signal="timeout" from="states/attack/duration_timer" to="states/attack" method="end_of_attack"]
+[connection signal="area_entered" from="states/attack/hit_area" to="states/attack" method="area_entered"]
+[connection signal="on_take_damage" from="health_component" to="states/knocked" method="on_take_damage"]

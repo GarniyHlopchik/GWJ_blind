@@ -21,3 +21,8 @@ func enter(obj):
 		sound_emiter.emit_wave(sound);
 	if(is_instance_valid(health_component)):
 		health_component.queue_free();
+	var timer = Timer.new();
+	add_child(timer);
+	timer.start(2);
+	await timer.timeout;
+	state_machine.queue_free();
