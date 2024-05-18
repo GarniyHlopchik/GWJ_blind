@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=51 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
@@ -27,6 +27,8 @@
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
 [ext_resource type="Texture2D" uid="uid://ejmaq1wy35m2" path="res://Sprites/Player/idle.png" id="21_6jvjt"]
 [ext_resource type="Texture2D" uid="uid://rp6wwsq1cjpo" path="res://Sprites/Player/attack.png" id="22_5ds4y"]
+[ext_resource type="Texture2D" uid="uid://dfat12fvohk1r" path="res://Sprites/Player/sit.png" id="23_0ioda"]
+[ext_resource type="Texture2D" uid="uid://bsrxu2rx1s3jn" path="res://Sprites/Player/play_sitting.png" id="24_7dk8t"]
 [ext_resource type="Resource" uid="uid://bcvscdna3tykw" path="res://Player/Attack.tres" id="24_pfmrp"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
@@ -219,11 +221,179 @@ tracks/3/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_thrrp"]
+resource_name = "sit"
+length = 1.00001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_0ioda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_sat_down"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nus8l"]
+resource_name = "play_sitting"
+length = 0.60001
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_7dk8t")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_im7eq"]
+resource_name = "stand_up"
+length = 1.00001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_0ioda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 5, 4, 3, 2, 1, 0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_got_up"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_got_up"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
 _data = {
 "RESET": SubResource("Animation_s0pgx"),
 "attack": SubResource("Animation_6fx67"),
 "idle": SubResource("Animation_3he5b"),
+"play_sitting": SubResource("Animation_nus8l"),
+"sit": SubResource("Animation_thrrp"),
+"stand_up": SubResource("Animation_im7eq"),
 "walk": SubResource("Animation_ooot5")
 }
 
@@ -314,7 +484,7 @@ one_shot = true
 shape = SubResource("CircleShape2D_sb2fr")
 
 [node name="sit_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 script = ExtResource("15_07xxq")
 
 [node name="chord_cooldown" type="Timer" parent="."]
@@ -425,6 +595,9 @@ position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_divfl")
 
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
+[connection signal="on_get_up" from="sit_timer" to="AnimationPlayer" method="_on_get_up"]
+[connection signal="on_sit" from="sit_timer" to="." method="_on_sit"]
+[connection signal="on_sit" from="sit_timer" to="AnimationPlayer" method="_on_sit"]
 [connection signal="area_entered" from="blade" to="blade" method="_on_area_entered"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
 [connection signal="on_attack_ended" from="blade" to="AnimationPlayer" method="_handle_attack_ended"]

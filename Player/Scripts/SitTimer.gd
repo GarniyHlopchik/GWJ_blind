@@ -12,12 +12,17 @@ signal on_sit();
 signal on_get_up();
 
 func _ready() -> void:
-	on_sit.connect(func (): is_sit = true)
-	on_get_up.connect(func (): is_sit = false)
+	on_sit.connect(sit)
+	on_get_up.connect(get_up)
 	timeout.connect(func (): 
 		on_sit.emit() 
 		stop()
 	);
+
+func sit():
+	is_sit = true;
+func get_up():
+	is_sit = false
 
 func _process(delta: float) -> void:
 	if(player.direction.length() == 0 && !is_sit && is_stopped()):

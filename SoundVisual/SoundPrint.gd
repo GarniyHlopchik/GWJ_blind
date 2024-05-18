@@ -1,4 +1,5 @@
 extends Area2D
+class_name SoundPrint
 
 @export var sprite: Sprite2D;
 @export var lifetime_type: LifetimeType = LifetimeType.INSTANT
@@ -6,6 +7,8 @@ extends Area2D
 @export var fading_time: float = 0.5
 
 enum LifetimeType {INSTANT, FROM_WAVE}
+
+var enabled = true;
 
 func _ready() -> void:
 	if(!sprite):
@@ -39,6 +42,7 @@ func _sound_entered(area: Area2D):
 var fading: float = 0;
 
 func _process(delta: float) -> void:
+	if(!enabled): return;
 	match lifetime_type:
 		LifetimeType.INSTANT:
 			var areas = get_overlapping_areas()
