@@ -1,7 +1,7 @@
 [gd_scene load_steps=46 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
-[ext_resource type="Script" path="res://scripts/cameraMovement.gd" id="4_j4ui1"]
+[ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://Player/VisualSounds/Chord.tres" id="5_kpy64"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
 [ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://Player/VisualSounds/Notes/1 D.tres" id="7_ac2rc"]
@@ -299,7 +299,7 @@ speed = 300.0
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true
-script = ExtResource("4_j4ui1")
+script = ExtResource("2_dhrwp")
 zoom_time = 0.7
 zoom_delta = 0.1
 ahead_distance = 0.1

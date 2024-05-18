@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgcln5701nr2p"]
+
+[ext_resource type="Script" path="res://MainMenu/Scripts/MainMenu.gd" id="1_4ol41"]
+[ext_resource type="Script" path="res://MainMenu/Scripts/MouseWaves.gd" id="1_ui3il"]
+[ext_resource type="Resource" uid="uid://b2flklf2812n1" path="res://MainMenu/mouse_step_sound.tres" id="2_w8aox"]
+[ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="3_50g1h"]
+[ext_resource type="Script" path="res://MainMenu/Scripts/TextToLetters.gd" id="4_wccji"]
+[ext_resource type="FontFile" uid="uid://bl38vhtjpv54n" path="res://MainMenu/IMFeENrm29P.ttf" id="5_ew0vc"]
+[ext_resource type="PackedScene" uid="uid://bewgnp7r24g5h" path="res://MainMenu/Prefabs/Button.tscn" id="6_nvgyo"]
+[ext_resource type="FontFile" uid="uid://bmsjvqn7nlhjq" path="res://MainMenu/IMFeENsc29P.ttf" id="7_egocs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3b3rh"]
+font = ExtResource("5_ew0vc")
+font_size = 100
+
+[sub_resource type="Theme" id="Theme_wtw1v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vac8r"]
+font = ExtResource("7_egocs")
+font_size = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8tq5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.435294, 0.431373, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2qpl"]
+font = ExtResource("7_egocs")
+font_size = 80
+font_color = Color(1, 0.435294, 0.431373, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4ol41")
+
+[node name="mouse" type="Node2D" parent="."]
+script = ExtResource("1_ui3il")
+sound = ExtResource("2_w8aox")
+
+[node name="sound_emiter" type="Node2D" parent="mouse"]
+unique_name_in_owner = true
+script = ExtResource("3_50g1h")
+
+[node name="Title" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 44.0
+offset_right = 1040.0
+offset_bottom = 172.0
+script = ExtResource("4_wccji")
+text = "The Blind Captive"
+settings = SubResource("LabelSettings_3b3rh")
+
+[node name="Start_button" parent="." instance=ExtResource("6_nvgyo")]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 251.0
+offset_right = 1088.0
+offset_bottom = 358.0
+metadata/_edit_group_ = true
+
+[node name="Start" type="HBoxContainer" parent="Start_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wtw1v")
+alignment = 1
+script = ExtResource("4_wccji")
+text = "Start"
+settings = SubResource("LabelSettings_vac8r")
+
+[node name="Quit_button" parent="." instance=ExtResource("6_nvgyo")]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 370.0
+offset_right = 1088.0
+offset_bottom = 477.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8tq5")
+metadata/_edit_group_ = true
+
+[node name="Quit" type="HBoxContainer" parent="Quit_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wtw1v")
+alignment = 1
+script = ExtResource("4_wccji")
+text = "Quit"
+settings = SubResource("LabelSettings_y2qpl")
+
+[connection signal="button_click" from="Start_button" to="." method="start"]
+[connection signal="button_click" from="Quit_button" to="." method="quit"]

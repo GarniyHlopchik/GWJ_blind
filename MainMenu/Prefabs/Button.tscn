@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bewgnp7r24g5h"]
+
+[ext_resource type="Script" path="res://MainMenu/Scripts/PanelBorder.gd" id="1_3bbl5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpyrc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sii6n"]
+size = Vector2(78.3, 21.4)
+
+[node name="Panel" type="Panel"]
+offset_left = 684.0
+offset_top = 288.0
+offset_right = 1075.0
+offset_bottom = 394.0
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xpyrc")
+script = ExtResource("1_3bbl5")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(33, 53)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32.45, 0.0999985)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sii6n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_sound_entered"]

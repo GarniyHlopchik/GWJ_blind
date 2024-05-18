@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 					fading = clamp(fading, 0, fading_time);
 					sprite.modulate.a = (1 - fading / fading_time) * line.default_color.a;
 				else:
+					sprite.modulate.a = 0;
 					line = null;
 		LifetimeType.FROM_WAVE:
 			if(is_instance_valid(line)):

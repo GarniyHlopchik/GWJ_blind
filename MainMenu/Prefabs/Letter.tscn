@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bidkkhdfw8qim"]
+
+[ext_resource type="FontFile" uid="uid://bl38vhtjpv54n" path="res://MainMenu/IMFeENrm29P.ttf" id="1_6lwjt"]
+[ext_resource type="Script" path="res://MainMenu/Scripts/LetterSoundPrint.gd" id="2_lph0d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3l36w"]
+font = ExtResource("1_6lwjt")
+font_size = 100
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwbow"]
+radius = 6.6
+height = 18.0
+
+[node name="Letter" type="Label"]
+text = "B"
+label_settings = SubResource("LabelSettings_3l36w")
+script = ExtResource("2_lph0d")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(33, 53)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_gwbow")
+
+[connection signal="area_entered" from="Area2D" to="." method="_sound_entered"]
