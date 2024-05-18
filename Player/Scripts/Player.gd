@@ -11,19 +11,21 @@ func _ready() -> void:
 	health_component.on_take_damage.connect(_damage_reaction);
 	health_component.on_death.connect(_death);
 
-var knocked: bool = false;
+var knocked_velocity: Vector2;
+var knocked_timer: Timer;
 
 func _damage_reaction(attack_info: AttackInfo):
-	knocked = true;
-	velocity = attack_info.knockback_dir * attack_info.knockback_strength;
-	var timer = Timer.new();
-	timer.autostart = true;
-	timer.one_shot = true;
-	timer.wait_time = attack_info.knockback_time;
-	add_child(timer);
-	await timer.timeout;
-	timer.queue_free()
-	knocked = false;
+	knocked_velocity = attack_info.knockback_dir * attack_info.knockback_strength;
+	print(knocked_velocity.length())
+	knocked_timer = Timer.new();
+	knocked_timer.autostart = true;
+	knocked_timer.one_shot = true;
+	knocked_timer.wait_time = attack_info.knockback_time;
+	add_child(knocked_timer);
+	await knocked_timer.timeout;
+	#print("knock-end")
+	knocked_timer.queue_free()
+	knocked_velocity = Vector2.ZERO;
 	
 func _death():
 	queue_free();
@@ -32,7 +34,9 @@ func _process(delta: float) -> void:
 	PlayerState.position = global_position;
 
 func _physics_process(delta: float) -> void:
-	if(knocked):
+	if(knocked_velocity != Vector2.ZERO):
+		velocity = knocked_velocity;
+		knocked_velocity = lerp(Vector2.ZERO, knocked_velocity, (.1 + knocked_timer.time_left) / knocked_timer.wait_time)
 		move_and_slide()
 		return;
 	direction = Input.get_vector("Left", "Right", "Up", "Down")

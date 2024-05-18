@@ -33,9 +33,11 @@ func physics_process(delta: float):
 	state_machine.move_and_slide();
 
 func _on_hit_area_area_entered(area: Area2D) -> void:
+	if(hit_collision.disabled): return;
 	if(area is HealthComponent):
-		var health = area as HealthComponent;
-		health.deal_damage(attack_info);
+		var attack = attack_info.duplicate() as AttackInfo;
+		attack.knockback_dir = state_machine.global_position.direction_to(PlayerState.position);
+		area.deal_damage(attack);
 		hit_collision.disabled = true;
 
 func _on_timer_timeout() -> void:

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_330dw")
 damage = 2
-knockback_strength = 3.0
-knockback_time = 0.5
+knockback_strength = 300.0
+knockback_time = 0.9
 sound_visual = ExtResource("2_4qsyq")

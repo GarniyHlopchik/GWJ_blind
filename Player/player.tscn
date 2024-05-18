@@ -417,8 +417,8 @@ script = ExtResource("26_2kq0c")
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("27_eqdtn")
-hp = 3
-max_hp = 3
+hp = 10
+max_hp = 10
 
 [node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)

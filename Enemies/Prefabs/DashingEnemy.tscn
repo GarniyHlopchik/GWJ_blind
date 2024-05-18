@@ -34,7 +34,7 @@ unique_name_in_owner = true
 script = ExtResource("2_v4t3i")
 collision_shape_2d = NodePath("../../CollisionShape2D")
 player_detected_state = NodePath("../walk")
-see_distance = 300.0
+see_distance = 400.0
 
 [node name="RayCast2D" type="RayCast2D" parent="states/idle"]
 collision_mask = 5

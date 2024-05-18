@@ -35,6 +35,7 @@ func end_of_attack():
 	state_machine.change_state(after_attack_state);
 	
 func area_entered(area: Area2D):
+	if(hit_collision.disabled): return;
 	if(area is HealthComponent):
 		var attack = attack_info.duplicate() as AttackInfo;
 		attack.knockback_dir = move_direction.normalized();
