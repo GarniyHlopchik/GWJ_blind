@@ -59,3 +59,5 @@ func _got_up():
 
 func _on_sit() -> void:
 	can_move = false
+func display_text(text):
+	print(text)
