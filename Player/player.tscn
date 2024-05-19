@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=54 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
@@ -34,8 +34,10 @@
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerHealth.gd" id="27_eqdtn"]
+[ext_resource type="AudioStream" uid="uid://dxycvfs7wrtu5" path="res://Audio/Sit down.wav" id="28_hr3sq"]
 [ext_resource type="Script" path="res://Player/Scripts/BladeAnimator.gd" id="28_nlbe3"]
 [ext_resource type="Texture2D" uid="uid://c3qjeq4b1o25u" path="res://Sprites/Player/sword.png" id="28_um6wv"]
+[ext_resource type="AudioStream" uid="uid://b0iuyckx1frdt" path="res://Audio/Stand up.wav" id="29_4868w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -521,6 +523,10 @@ autoplay = "walk"
 speed_scale = 1.2
 script = ExtResource("19_jj5cj")
 step_paritcle = ExtResource("20_de0kk")
+sit_sound = ExtResource("28_hr3sq")
+stand_up_sound = ExtResource("29_4868w")
+
+[node name="AudioStream" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)

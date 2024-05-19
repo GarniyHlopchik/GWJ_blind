@@ -1,11 +1,15 @@
 extends AnimationPlayer
 
 @export var step_paritcle: SoundVisual;
+@export var sit_sound: AudioStream;
+@export var stand_up_sound: AudioStream;
+
 @onready var player: Player = $".."
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 @onready var blade: Blade = $"../blade"
 @onready var sound_print: SoundPrint = $"../Sprite2D/Area2D"
+@onready var audio_stream: AudioStreamPlayer = $AudioStream
 
 var prev_direction: bool;
 
@@ -76,11 +80,15 @@ func _on_sit() -> void:
 	sprite_2d.modulate.a = 1
 	state = State.SIT;
 	play("sit");
-
+	audio_stream.stream = sit_sound;
+	audio_stream.play()
+	
 func _on_get_up() -> void:
 	sprite_2d.modulate.a = 1
 	state = State.STAND_UP;
 	play("stand_up");
+	audio_stream.stream = stand_up_sound;
+	audio_stream.play()
 func _on_play_note() -> void:
 	if(state != State.SIT || State.STAND_UP):
 		state = State.PLAY_SITTING;

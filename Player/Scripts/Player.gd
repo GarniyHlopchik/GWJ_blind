@@ -5,6 +5,10 @@ class_name Player
 @export var speed = 150.0
 @onready var health_component: HealthComponent = $health_component
 
+
+@export var sword_slash: Array[AudioStream]
+@export var hit_sfx: Array[AudioStream]
+
 var direction: Vector2;
 
 func _ready() -> void:
@@ -15,6 +19,8 @@ var knocked_velocity: Vector2;
 var knocked_timer: Timer;
 
 func _damage_reaction(attack_info: AttackInfo):
+	$hit_sfx.stream = hit_sfx[randi_range(0,3)]
+	$hit_sfx.play()
 	knocked_velocity = attack_info.knockback_dir * attack_info.knockback_strength;
 	print(knocked_velocity.length())
 	knocked_timer = Timer.new();
@@ -62,7 +68,11 @@ func _on_sit() -> void:
 @export var fade_time: float
 @export var delay_time: float
 @export var life_time: float
+var is_displaying = false
 func display_text(text,voice):
+	if is_displaying:
+		return
+	is_displaying = true
 	$voice.stream = voice
 	$voice.play()
 	var words_arr = text.split("/")
@@ -87,7 +97,7 @@ func display_text(text,voice):
 			tween.tween_property(a,"modulate:a",0.0,fade_time)
 	for i in %text.get_children():
 		i.queue_free()
-	
+	is_displaying = false
 
 
 func _on_word_timeout_timeout() -> void:
