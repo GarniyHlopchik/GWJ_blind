@@ -1,8 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://nafn1aysv3bb"]
+
+[gd_scene load_steps=63 format=3 uid="uid://nafn1aysv3bb"]
+
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="AudioStream" uid="uid://uixdvu6m88fo" path="res://Audio/sfx/sword/sword_attack-001.wav" id="2_3ojh6"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
+
 [ext_resource type="PackedScene" uid="uid://dgcln5701nr2p" path="res://MainMenu/Prefabs/MainMenu.tscn" id="2_id7lr"]
 [ext_resource type="AudioStream" uid="uid://b7bb4bk5ge8ag" path="res://Audio/sfx/sword/sword_attack-002.wav" id="3_8ludk"]
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="3_ry65t"]
@@ -19,6 +22,24 @@
 [ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://Player/VisualSounds/Notes/3 F.tres" id="9_n3xd0"]
 [ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://Player/VisualSounds/Notes/4 F#.tres" id="10_3x7yu"]
 [ext_resource type="AudioStream" uid="uid://b0oll2q85y6d7" path="res://Audio/sfx/bard_hit/bard_hit-004.wav" id="10_maj2d"]
+
+[ext_resource type="AudioStream" uid="uid://uixdvu6m88fo" path="res://Audio/sfx/sword/sword_attack-001.wav" id="2_kp8od"]
+[ext_resource type="AudioStream" uid="uid://b7bb4bk5ge8ag" path="res://Audio/sfx/sword/sword_attack-002.wav" id="3_myevo"]
+[ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="3_ry65t"]
+[ext_resource type="AudioStream" uid="uid://0a2g42mv0s0p" path="res://Audio/sfx/sword/sword_attack-003.wav" id="4_rqf4r"]
+[ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://Player/VisualSounds/Chord.tres" id="5_kpy64"]
+[ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
+[ext_resource type="AudioStream" uid="uid://bnd56llx67hj" path="res://Audio/sfx/sword/sword_attack-004.wav" id="5_rbw8i"]
+[ext_resource type="AudioStream" uid="uid://fwx76f5brcnj" path="res://Audio/sfx/sword/sword_attack-005.wav" id="6_mxn2e"]
+[ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://Player/VisualSounds/Notes/1 D.tres" id="7_ac2rc"]
+[ext_resource type="AudioStream" uid="uid://bl1qd8i6gwrku" path="res://Audio/sfx/bard_hit/bard_hit-001.wav" id="7_ibh4r"]
+[ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://Player/VisualSounds/Notes/2 E.tres" id="8_sqrow"]
+[ext_resource type="AudioStream" uid="uid://dntbis3x7yk1h" path="res://Audio/sfx/bard_hit/bard_hit-002.wav" id="8_xf3f4"]
+[ext_resource type="AudioStream" uid="uid://nrjqgs6ceq28" path="res://Audio/sfx/bard_hit/bard_hit-003.wav" id="9_b0nsm"]
+[ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://Player/VisualSounds/Notes/3 F.tres" id="9_n3xd0"]
+[ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://Player/VisualSounds/Notes/4 F#.tres" id="10_3x7yu"]
+[ext_resource type="AudioStream" uid="uid://b0oll2q85y6d7" path="res://Audio/sfx/bard_hit/bard_hit-004.wav" id="10_d0ov4"]
+
 [ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://Player/VisualSounds/Notes/5 G.tres" id="11_nco73"]
 [ext_resource type="Resource" uid="uid://cwq4a78htuhsn" path="res://Player/VisualSounds/Notes/6 A.tres" id="12_jj07r"]
 [ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://Player/VisualSounds/Notes/7 A#.tres" id="13_3g485"]
@@ -392,12 +413,16 @@ collision_layer = 4
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 300.0
-menu_scene = ExtResource("2_id7lr")
-sword_slash = Array[AudioStream]([ExtResource("2_3ojh6"), ExtResource("3_8ludk"), ExtResource("4_ecf0x"), ExtResource("5_wuyin"), ExtResource("6_4ig7b")])
-hit_sfx = Array[AudioStream]([ExtResource("7_7n8sy"), ExtResource("8_dpupn"), ExtResource("9_jul0t"), ExtResource("10_maj2d")])
+
+
+sword_slash = Array[AudioStream]([ExtResource("2_kp8od"), ExtResource("3_myevo"), ExtResource("4_rqf4r"), ExtResource("5_rbw8i"), ExtResource("6_mxn2e")])
+hit_sfx = Array[AudioStream]([ExtResource("7_ibh4r"), ExtResource("8_xf3f4"), ExtResource("9_b0nsm"), ExtResource("10_d0ov4")])
+
 fade_time = 0.5
 delay_time = 0.3
 life_time = 1.5
+
+[node name="sword_sfx" type="AudioStreamPlayer" parent="."]
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true

@@ -11,6 +11,10 @@
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="8_befu8"]
 [ext_resource type="AudioStream" uid="uid://cy1do31o3q4e" path="res://Audio/Music/menu_music.wav" id="10_702c6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ved42"]
+font = ExtResource("5_ew0vc")
+font_size = 30
+
 [sub_resource type="LabelSettings" id="LabelSettings_3b3rh"]
 font = ExtResource("5_ew0vc")
 font_size = 100
@@ -42,6 +46,20 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4ol41")
 
+[node name="easter_egg" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 643.0
+offset_right = 743.0
+offset_bottom = 727.0
+grow_vertical = 0
+script = ExtResource("4_wccji")
+text = "5575676541567655585765451567653"
+settings = SubResource("LabelSettings_ved42")
+
 [node name="mouse" type="Node2D" parent="."]
 script = ExtResource("1_ui3il")
 sound = ExtResource("2_w8aox")
@@ -61,11 +79,18 @@ text = "The Blind Captive"
 settings = SubResource("LabelSettings_3b3rh")
 
 [node name="Start_button" parent="." instance=ExtResource("6_nvgyo")]
-layout_mode = 0
-offset_left = 697.0
-offset_top = 251.0
-offset_right = 1088.0
-offset_bottom = 358.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 876.0
+offset_top = 410.0
+offset_right = 1267.0
+offset_bottom = 517.0
+grow_horizontal = 0
+grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="Start" type="HBoxContainer" parent="Start_button"]
@@ -82,11 +107,18 @@ text = "Start"
 settings = SubResource("LabelSettings_vac8r")
 
 [node name="Quit_button" parent="." instance=ExtResource("6_nvgyo")]
-layout_mode = 0
-offset_left = 697.0
-offset_top = 370.0
-offset_right = 1088.0
-offset_bottom = 477.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 876.0
+offset_top = 551.0
+offset_right = 1267.0
+offset_bottom = 658.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i8tq5")
 metadata/_edit_group_ = true
 

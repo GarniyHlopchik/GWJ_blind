@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=35 format=3 uid="uid://bbl0vnywqdhfh"]
+
 
 [ext_resource type="Script" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="1_4a27i"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/IdleState.gd" id="2_v4t3i"]
@@ -8,44 +10,27 @@
 [ext_resource type="Script" path="res://Enemies/Scripts/States/LongDashAttackState.gd" id="6_16vcv"]
 [ext_resource type="Resource" uid="uid://do6fystm5jwxo" path="res://Enemies/Prefabs/DashingEnemyAttack.tres" id="7_qwemu"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/KnockedState.gd" id="8_rqal0"]
-[ext_resource type="AudioStream" uid="uid://d3ropr6dxaqhb" path="res://Audio/sfx/enemy_hit/enemy hit-001.wav" id="9_gt0c1"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/DeathState.gd" id="9_mbqj3"]
-[ext_resource type="AudioStream" uid="uid://cqirwfcl1fk8x" path="res://Audio/sfx/enemy_hit/enemy hit-002.wav" id="10_nuqmj"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="10_rkb0h"]
 [ext_resource type="Texture2D" uid="uid://dhp3v5dguosbu" path="res://Sprites/Enemy/big_monster_idle_ss.png" id="11_gidle"]
+
 [ext_resource type="Texture2D" uid="uid://gq07kr3hp41" path="res://Sprites/Enemy/big_monster_attack_ss.png" id="11_kw28a"]
 [ext_resource type="AudioStream" uid="uid://8670rxly0jf6" path="res://Audio/sfx/enemy_hit/enemy hit-003.wav" id="11_xw3m0"]
 [ext_resource type="Texture2D" uid="uid://b2v7f7kptj0p3" path="res://Sprites/Enemy/big_monster_knocked_ss.png" id="11_y1e4g"]
 [ext_resource type="AudioStream" uid="uid://dpxirqtu6as7a" path="res://Audio/sfx/enemy_hit/enemy hit-004.wav" id="12_1xtf0"]
+
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="12_skmhi"]
 [ext_resource type="Texture2D" uid="uid://e4vaogh50f00" path="res://Sprites/Enemy/big_monster_walk_ss.png" id="13_hfslx"]
-[ext_resource type="AudioStream" uid="uid://guui3t3fgamn" path="res://Audio/sfx/enemy_hit/enemy hit-005.wav" id="13_jsa3s"]
 [ext_resource type="Script" path="res://Character/HealthComponent.gd" id="13_xugx1"]
+
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="14_804gw"]
 [ext_resource type="Texture2D" uid="uid://dy7x6ctf0hlwa" path="res://Sprites/Enemy/big_monster_prepare_ss.png" id="16_0u8cw"]
 [ext_resource type="AudioStream" uid="uid://cg03e2kvg33rq" path="res://Audio/sfx/enemy_hit/monster die.wav" id="16_b3nln"]
 
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
 radius = 57.0
 height = 118.0
-
-[sub_resource type="Resource" id="Resource_m3h2h"]
-script = ExtResource("14_804gw")
-audio = Array[AudioStream]([ExtResource("9_gt0c1"), ExtResource("10_nuqmj"), ExtResource("11_xw3m0"), ExtResource("12_1xtf0"), ExtResource("13_jsa3s")])
-color = Color(1, 1, 1, 1)
-width = 1.0
-lifetime = 1.0
-fadetime = 1.0
-speed = 500.0
-
-[sub_resource type="Resource" id="Resource_qm5cw"]
-script = ExtResource("14_804gw")
-audio = Array[AudioStream]([ExtResource("16_b3nln")])
-color = Color(1, 1, 1, 1)
-width = 1.0
-lifetime = 1.0
-fadetime = 1.0
-speed = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
 radius = 54.7449
@@ -336,12 +321,10 @@ disabled = true
 [node name="knocked" type="Node2D" parent="states" node_paths=PackedStringArray("state_after")]
 script = ExtResource("8_rqal0")
 state_after = NodePath("../walk")
-sound = SubResource("Resource_m3h2h")
 
 [node name="death" type="Node2D" parent="states" node_paths=PackedStringArray("health_component")]
 script = ExtResource("9_mbqj3")
 health_component = NodePath("../../health_component")
-sound = SubResource("Resource_qm5cw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0

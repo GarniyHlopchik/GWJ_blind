@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://kp0ih33lu0xd"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=6 format=3 uid="uid://kp0ih33lu0xd"]
 
+[ext_resource type="AudioStream" uid="uid://bl1qd8i6gwrku" path="res://Audio/sfx/bard_hit/bard_hit-001.wav" id="1_oqaid"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_wypm8"]
+[ext_resource type="AudioStream" uid="uid://dntbis3x7yk1h" path="res://Audio/sfx/bard_hit/bard_hit-002.wav" id="2_r8vvt"]
+[ext_resource type="AudioStream" uid="uid://nrjqgs6ceq28" path="res://Audio/sfx/bard_hit/bard_hit-003.wav" id="3_5tlhs"]
+[ext_resource type="AudioStream" uid="uid://b0oll2q85y6d7" path="res://Audio/sfx/bard_hit/bard_hit-004.wav" id="4_5fsyy"]
 
 [resource]
 script = ExtResource("1_wypm8")
-audio = Array[AudioStream]([])
+audio = Array[AudioStream]([ExtResource("1_oqaid"), ExtResource("2_r8vvt"), ExtResource("3_5tlhs"), ExtResource("4_5fsyy")])
 color = Color(1, 0, 0, 0.882353)
 width = 2.0
 lifetime = 0.0
