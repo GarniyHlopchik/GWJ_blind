@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uydc4dj0m73c"
+path="res://.godot/imported/monster walk-004.wav-f3c748b5b409b65819d5c8b0040d6bbb.sample"
+
+[deps]
+
+source_file="res://Audio/sfx/enemy_hit/monster walk-004.wav"
+dest_files=["res://.godot/imported/monster walk-004.wav-f3c748b5b409b65819d5c8b0040d6bbb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://opa634g10gef"]
+
+[ext_resource type="Script" path="res://cutscenes/cutscene.gd" id="1_xja45"]
+[ext_resource type="PackedScene" uid="uid://dgcln5701nr2p" path="res://MainMenu/Prefabs/MainMenu.tscn" id="2_ma8c0"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y3tig"]
+file = "SCUM.ogg"
+
+[node name="ending_cutscene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Cutscene" type="VideoStreamPlayer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = SubResource("VideoStreamTheora_y3tig")
+autoplay = true
+script = ExtResource("1_xja45")
+scene_to_load = ExtResource("2_ma8c0")
+
+[connection signal="finished" from="CanvasLayer/Cutscene" to="CanvasLayer/Cutscene" method="_on_finished"]

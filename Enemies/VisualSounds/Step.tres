@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://dysn8brf1q41w"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=7 format=3 uid="uid://dysn8brf1q41w"]
 
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_awhfr"]
+[ext_resource type="AudioStream" uid="uid://cmdl2dums0pbc" path="res://Audio/sfx/enemy_hit/monster walk-001.wav" id="1_ljra6"]
+[ext_resource type="AudioStream" uid="uid://ccjdu46yo6jib" path="res://Audio/sfx/enemy_hit/monster walk-002.wav" id="2_c7sfh"]
+[ext_resource type="AudioStream" uid="uid://ch3gdiapfyo80" path="res://Audio/sfx/enemy_hit/monster walk-003.wav" id="3_u6u6n"]
+[ext_resource type="AudioStream" uid="uid://uydc4dj0m73c" path="res://Audio/sfx/enemy_hit/monster walk-004.wav" id="4_ogh6u"]
+[ext_resource type="AudioStream" uid="uid://cm4xpfrrneunh" path="res://Audio/sfx/enemy_hit/monster walk-005.wav" id="5_d2qpi"]
 
 [resource]
 script = ExtResource("1_awhfr")
-audio = Array[AudioStream]([])
+audio = Array[AudioStream]([ExtResource("1_ljra6"), ExtResource("2_c7sfh"), ExtResource("3_u6u6n"), ExtResource("4_ogh6u"), ExtResource("5_d2qpi")])
 color = Color(1, 0.784314, 0.784314, 0.6)
 width = 1.0
 lifetime = 0.1
