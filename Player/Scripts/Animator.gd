@@ -1,11 +1,15 @@
 extends AnimationPlayer
 
 @export var step_paritcle: SoundVisual;
+@export var sit_sound: AudioStream;
+@export var stand_up_sound: AudioStream;
+
 @onready var player: Player = $".."
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 @onready var blade: Blade = $"../blade"
 @onready var sound_print: SoundPrint = $"../Sprite2D/Area2D"
+@onready var audio_stream: AudioStreamPlayer = $AudioStream
 
 var prev_direction: bool;
 
@@ -30,7 +34,8 @@ func _process(delta: float) -> void:
 	#print(state_name)
 	call("_%s" % state_name, delta);
 	current_animation = state_name
-	play(state_name);
+	if(state != State.SIT && state != State.STAND_UP):
+		play(state_name);
 
 func _sit(delta: float):
 	sprite_2d.flip_h = prev_direction;
@@ -71,21 +76,33 @@ func _handle_attack_ended() -> void:
 	state = State.IDLE;
 
 func _on_sit() -> void:
+	sound_print.enabled = false;
 	sprite_2d.modulate.a = 1
 	state = State.SIT;
-
+	play("sit");
+	audio_stream.stream = sit_sound;
+	audio_stream.play()
+	
 func _on_get_up() -> void:
 	sprite_2d.modulate.a = 1
 	state = State.STAND_UP;
+	play("stand_up");
+	audio_stream.stream = stand_up_sound;
+	audio_stream.play()
 func _on_play_note() -> void:
-	state = State.PLAY_SITTING;
+	if(state != State.SIT || State.STAND_UP):
+		state = State.PLAY_SITTING;
 func _on_sat_down() -> void:
+	pause()
 	timer = .3
 	await timeout;
+	play("play_sitting");
 	state = State.PLAY_SITTING;
 	sound_print.enabled = true;
 func _on_got_up() -> void:
+	pause()
 	timer = .3
 	await timeout;
+	play("idle");
 	state = State.IDLE;
 	sound_print.enabled = true;
