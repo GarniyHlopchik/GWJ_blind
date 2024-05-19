@@ -10,11 +10,14 @@ const pattern: Array[int] = [5,5,7,5,6,7,6,5,4,1,5,6,7,6,5,5,5,8,5,7,6,5,4,5,1,5
 
 var pattern_index: int = 0;
 
+signal note_played;
+	
 func _process(delta: float) -> void:
 	if(!sit_timer.is_sit):
 		return;
 	if(!Input.is_action_just_pressed("Any_note")):
 		return;
+	note_played.emit();
 	animation_player.play("play_sitting")
 	for i in notes_audio.size():
 		if(Input.is_action_just_pressed("Note_%s" % (i+1))):
