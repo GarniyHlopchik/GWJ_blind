@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://poetry_trigger.gd" id="1_05cvk"]
 [ext_resource type="AudioStream" uid="uid://5hpi3d22n5x0" path="res://Audio/Voice/Voice_1.wav" id="2_04d8v"]
 
-[node name="Area2D" type="Area2D"]
+[node name="poetry" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_05cvk")
