@@ -39,7 +39,7 @@ size = Vector2(119, 197)
 position = Vector2(-825, -826)
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
-position = Vector2(-59, 14)
+position = Vector2(-41, 14)
 navigation_polygon = SubResource("NavigationPolygon_iqxlx")
 
 [node name="TileMap" type="TileMap" parent="NavigationRegion2D2"]
@@ -81,3 +81,27 @@ voice = ExtResource("7_1a7q0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="poetry2"]
 position = Vector2(-1.5, 10.5)
 shape = SubResource("RectangleShape2D_x0yth")
+
+[node name="DashingEnemy3" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(1563, 75)
+
+[node name="DashingEnemy4" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(1785, -797)
+
+[node name="DashingEnemy5" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(2582, 26)
+
+[node name="DashingEnemy6" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(4245, 1317)
+
+[node name="DashingEnemy7" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(3117, 1631)
+
+[node name="DashingEnemy8" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(6319, 1864)
+
+[node name="DashingEnemy9" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(6105, 8)
+
+[node name="DashingEnemy10" parent="." instance=ExtResource("4_5n1m0")]
+position = Vector2(6961, 1055)

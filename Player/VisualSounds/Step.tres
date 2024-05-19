@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=2 format=3 uid="uid://by74txr0wud2k"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=8 format=3 uid="uid://by74txr0wud2k"]
 
+[ext_resource type="AudioStream" uid="uid://ccqpjseetdb57" path="res://Audio/sfx/step/footstep-001.wav" id="1_jc88j"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="1_u8ssk"]
+[ext_resource type="AudioStream" uid="uid://di2bra0edvcr0" path="res://Audio/sfx/step/footstep-002.wav" id="2_5gqc6"]
+[ext_resource type="AudioStream" uid="uid://cowaglncscw2d" path="res://Audio/sfx/step/footstep-003.wav" id="3_yfqsk"]
+[ext_resource type="AudioStream" uid="uid://dmvk34mkxt1br" path="res://Audio/sfx/step/footstep-004.wav" id="4_wns4i"]
+[ext_resource type="AudioStream" uid="uid://t70ph1fbyijd" path="res://Audio/sfx/step/footstep-005.wav" id="5_ffe30"]
+[ext_resource type="AudioStream" uid="uid://csxlo27fqy74h" path="res://Audio/sfx/step/footstep-006.wav" id="6_cholh"]
 
 [resource]
 script = ExtResource("1_u8ssk")
-audio = Array[AudioStream]([])
+audio = Array[AudioStream]([ExtResource("1_jc88j"), ExtResource("2_5gqc6"), ExtResource("3_yfqsk"), ExtResource("4_wns4i"), ExtResource("5_ffe30"), ExtResource("6_cholh")])
 color = Color(1, 1, 1, 0.6)
 width = 1.0
 lifetime = 0.0
