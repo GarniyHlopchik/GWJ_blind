@@ -59,5 +59,7 @@ func _got_up():
 
 func _on_sit() -> void:
 	can_move = false
-func display_text(text):
+func display_text(text,voice):
 	print(text)
+	$voice.stream = voice
+	$voice.play()

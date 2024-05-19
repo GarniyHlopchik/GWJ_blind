@@ -1,7 +1,9 @@
 extends Area2D
-class_name PoetryTrigger
 @export var text: String
-func _ready() -> void:
-	connect("body_entered",display)
-func display(body):
-	body.display_text(text)
+@export var voice: AudioStream
+
+func _on_body_entered(body: Node2D) -> void:
+	print("yep")
+	if body.name == "player":
+		print("absolutly")
+		body.display_text(text,voice)
