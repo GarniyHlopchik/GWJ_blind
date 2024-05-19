@@ -4,6 +4,7 @@ class_name Player
 @export var acceleration_time: float
 @export var speed = 150.0
 @onready var health_component: HealthComponent = $health_component
+@onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 
 
 @export var sword_slash: Array[AudioStream]
@@ -19,8 +20,9 @@ var knocked_velocity: Vector2;
 var knocked_timer: Timer;
 
 func _damage_reaction(attack_info: AttackInfo):
-	$hit_sfx.stream = hit_sfx[randi_range(0,3)]
-	$hit_sfx.play()
+	#$hit_sfx.stream = hit_sfx[randi_range(0,3)]
+	#$hit_sfx.play()
+	sound_emiter.emit_wave(attack_info.sound_visual);
 	knocked_velocity = attack_info.knockback_dir * attack_info.knockback_strength;
 	print(knocked_velocity.length())
 	knocked_timer = Timer.new();
