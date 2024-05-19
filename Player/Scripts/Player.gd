@@ -4,7 +4,7 @@ class_name Player
 @export var acceleration_time: float
 @export var speed = 150.0
 @onready var health_component: HealthComponent = $health_component
-
+@export var menu_scene: PackedScene
 
 @export var sword_slash: Array[AudioStream]
 @export var hit_sfx: Array[AudioStream]
@@ -34,7 +34,9 @@ func _damage_reaction(attack_info: AttackInfo):
 	knocked_velocity = Vector2.ZERO;
 	
 func _death():
-	queue_free();
+	#var menu_obj = menu_scene.instantiate()
+	#get_tree().root.add_child(menu_obj)
+	get_parent().queue_free()
 
 func _process(delta: float) -> void:
 	PlayerState.position = global_position;
@@ -83,7 +85,7 @@ func display_text(text,voice):
 		%text.add_child(h_box)
 		for a in i:
 			var label = Label.new()
-			label.text = a
+			label.text = a+" "
 			%text.get_node(str(h_box.name)).add_child(label)
 			var tween = get_tree().create_tween()
 			label.modulate.a = 0.0

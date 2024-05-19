@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgcln5701nr2p"]
+[gd_scene load_steps=15 format=3 uid="uid://dgcln5701nr2p"]
 
 [ext_resource type="Script" path="res://MainMenu/Scripts/MainMenu.gd" id="1_4ol41"]
 [ext_resource type="Script" path="res://MainMenu/Scripts/MouseWaves.gd" id="1_ui3il"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bewgnp7r24g5h" path="res://MainMenu/Prefabs/Button.tscn" id="6_nvgyo"]
 [ext_resource type="FontFile" uid="uid://bmsjvqn7nlhjq" path="res://MainMenu/IMFeENsc29P.ttf" id="7_egocs"]
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="8_befu8"]
+[ext_resource type="AudioStream" uid="uid://cy1do31o3q4e" path="res://Audio/Music/menu_music.wav" id="10_702c6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3b3rh"]
 font = ExtResource("5_ew0vc")
@@ -101,6 +102,10 @@ alignment = 1
 script = ExtResource("4_wccji")
 text = "Quit"
 settings = SubResource("LabelSettings_y2qpl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_702c6")
+autoplay = true
 
 [connection signal="button_click" from="Start_button" to="." method="start"]
 [connection signal="button_click" from="Quit_button" to="." method="quit"]

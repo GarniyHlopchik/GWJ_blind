@@ -1,14 +1,24 @@
-[gd_scene load_steps=54 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=61 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
+[ext_resource type="AudioStream" uid="uid://uixdvu6m88fo" path="res://Audio/sfx/sword/sword_attack-001.wav" id="2_3ojh6"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
+[ext_resource type="PackedScene" uid="uid://dgcln5701nr2p" path="res://MainMenu/Prefabs/MainMenu.tscn" id="2_id7lr"]
+[ext_resource type="AudioStream" uid="uid://b7bb4bk5ge8ag" path="res://Audio/sfx/sword/sword_attack-002.wav" id="3_8ludk"]
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="3_ry65t"]
+[ext_resource type="AudioStream" uid="uid://0a2g42mv0s0p" path="res://Audio/sfx/sword/sword_attack-003.wav" id="4_ecf0x"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://Player/VisualSounds/Chord.tres" id="5_kpy64"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
+[ext_resource type="AudioStream" uid="uid://bnd56llx67hj" path="res://Audio/sfx/sword/sword_attack-004.wav" id="5_wuyin"]
+[ext_resource type="AudioStream" uid="uid://fwx76f5brcnj" path="res://Audio/sfx/sword/sword_attack-005.wav" id="6_4ig7b"]
+[ext_resource type="AudioStream" uid="uid://bl1qd8i6gwrku" path="res://Audio/sfx/bard_hit/bard_hit-001.wav" id="7_7n8sy"]
 [ext_resource type="Resource" uid="uid://dqf6pm74vbn15" path="res://Player/VisualSounds/Notes/1 D.tres" id="7_ac2rc"]
+[ext_resource type="AudioStream" uid="uid://dntbis3x7yk1h" path="res://Audio/sfx/bard_hit/bard_hit-002.wav" id="8_dpupn"]
 [ext_resource type="Resource" uid="uid://bvhrvie7lrs32" path="res://Player/VisualSounds/Notes/2 E.tres" id="8_sqrow"]
+[ext_resource type="AudioStream" uid="uid://nrjqgs6ceq28" path="res://Audio/sfx/bard_hit/bard_hit-003.wav" id="9_jul0t"]
 [ext_resource type="Resource" uid="uid://bbhvk1oqsjvu6" path="res://Player/VisualSounds/Notes/3 F.tres" id="9_n3xd0"]
 [ext_resource type="Resource" uid="uid://byqa6lpw2i5ah" path="res://Player/VisualSounds/Notes/4 F#.tres" id="10_3x7yu"]
+[ext_resource type="AudioStream" uid="uid://b0oll2q85y6d7" path="res://Audio/sfx/bard_hit/bard_hit-004.wav" id="10_maj2d"]
 [ext_resource type="Resource" uid="uid://dx676b6fuiryy" path="res://Player/VisualSounds/Notes/5 G.tres" id="11_nco73"]
 [ext_resource type="Resource" uid="uid://cwq4a78htuhsn" path="res://Player/VisualSounds/Notes/6 A.tres" id="12_jj07r"]
 [ext_resource type="Resource" uid="uid://dtkib8c44tx51" path="res://Player/VisualSounds/Notes/7 A#.tres" id="13_3g485"]
@@ -34,10 +44,8 @@
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerHealth.gd" id="27_eqdtn"]
-[ext_resource type="AudioStream" uid="uid://dxycvfs7wrtu5" path="res://Audio/Sit down.wav" id="28_hr3sq"]
 [ext_resource type="Script" path="res://Player/Scripts/BladeAnimator.gd" id="28_nlbe3"]
 [ext_resource type="Texture2D" uid="uid://c3qjeq4b1o25u" path="res://Sprites/Player/sword.png" id="28_um6wv"]
-[ext_resource type="AudioStream" uid="uid://b0iuyckx1frdt" path="res://Audio/Stand up.wav" id="29_4868w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -165,101 +173,6 @@ tracks/2/keys = {
 "values": [6]
 }
 
-[sub_resource type="Animation" id="Animation_pyl0e"]
-resource_name = "play_sitting"
-loop_mode = 1
-step = 0.16
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("24_nsm5u")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_tehqk"]
-resource_name = "sit"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("23_g52b7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_sat_down"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_ooot5"]
 resource_name = "walk"
 length = 1.20002
@@ -319,8 +232,8 @@ tracks/3/keys = {
 "values": [6]
 }
 
-[sub_resource type="Animation" id="Animation_7dsek"]
-resource_name = "stand_up"
+[sub_resource type="Animation" id="Animation_tehqk"]
+resource_name = "sit"
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -356,35 +269,48 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [7, 6, 5, 4, 3, 2, 1, 0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
+
+[sub_resource type="Animation" id="Animation_pyl0e"]
+resource_name = "play_sitting"
+loop_mode = 1
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_got_up"
-}]
+"update": 1,
+"values": [ExtResource("24_nsm5u")]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_got_up"
-}]
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
@@ -394,7 +320,6 @@ _data = {
 "idle": SubResource("Animation_3he5b"),
 "play_sitting": SubResource("Animation_pyl0e"),
 "sit": SubResource("Animation_tehqk"),
-"stand_up": SubResource("Animation_7dsek"),
 "walk": SubResource("Animation_ooot5")
 }
 
@@ -467,6 +392,9 @@ collision_layer = 4
 script = ExtResource("1_ddj2j")
 acceleration_time = 0.15
 speed = 300.0
+menu_scene = ExtResource("2_id7lr")
+sword_slash = Array[AudioStream]([ExtResource("2_3ojh6"), ExtResource("3_8ludk"), ExtResource("4_ecf0x"), ExtResource("5_wuyin"), ExtResource("6_4ig7b")])
+hit_sfx = Array[AudioStream]([ExtResource("7_7n8sy"), ExtResource("8_dpupn"), ExtResource("9_jul0t"), ExtResource("10_maj2d")])
 fade_time = 0.5
 delay_time = 0.3
 life_time = 1.5
@@ -523,10 +451,6 @@ autoplay = "walk"
 speed_scale = 1.2
 script = ExtResource("19_jj5cj")
 step_paritcle = ExtResource("20_de0kk")
-sit_sound = ExtResource("28_hr3sq")
-stand_up_sound = ExtResource("29_4868w")
-
-[node name="AudioStream" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
@@ -613,11 +537,11 @@ shape = SubResource("CapsuleShape2D_divfl")
 
 [node name="voice" type="AudioStreamPlayer" parent="."]
 
+[node name="sword_sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="camera/Camera2D/shake_timer" to="camera/Camera2D" method="_on_shake_timer_timeout"]
-[connection signal="on_get_up" from="sit_timer" to="AnimationPlayer" method="_on_get_up"]
-[connection signal="on_sit" from="sit_timer" to="." method="_on_sit"]
-[connection signal="on_sit" from="sit_timer" to="AnimationPlayer" method="_on_sit"]
-[connection signal="note_played" from="notes" to="AnimationPlayer" method="_on_play_note"]
 [connection signal="area_entered" from="blade" to="blade" method="_on_area_entered"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
 [connection signal="on_attack_ended" from="blade" to="AnimationPlayer" method="_handle_attack_ended"]
