@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tt1e74ch0mu8"
+path="res://.godot/imported/Chord 3 - F#-001.wav-64b5168e58ba7cd5bb896060c1500bac.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Chords/Chord 3 - F#-001.wav"
+dest_files=["res://.godot/imported/Chord 3 - F#-001.wav-64b5168e58ba7cd5bb896060c1500bac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

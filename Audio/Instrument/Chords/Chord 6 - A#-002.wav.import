@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btgbs7u3d3jvh"
+path="res://.godot/imported/Chord 6 - A#-002.wav-8eef2a21fb3b463ec67ecb4274a44d4c.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Chords/Chord 6 - A#-002.wav"
+dest_files=["res://.godot/imported/Chord 6 - A#-002.wav-8eef2a21fb3b463ec67ecb4274a44d4c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

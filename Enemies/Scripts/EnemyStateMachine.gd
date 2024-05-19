@@ -20,7 +20,10 @@ func _process(delta: float) -> void:
 	for state in any_states:
 		if(state.condition() && _current_state != state):
 			change_state(state);
-			
+	if velocity.x > 0:
+		$Sprite2D.flip_h = false
+	else:
+		$Sprite2D.flip_h = true		
 	_current_state.process(delta);
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

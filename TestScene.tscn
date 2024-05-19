@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://brsh51xj48qq7"]
+[gd_scene load_steps=10 format=3 uid="uid://brsh51xj48qq7"]
 
 [ext_resource type="PackedScene" uid="uid://chycdm7t57bej" path="res://wall.tscn" id="1_nkvkp"]
 [ext_resource type="PackedScene" uid="uid://nafn1aysv3bb" path="res://Player/player.tscn" id="1_ti5pg"]
-[ext_resource type="PackedScene" uid="uid://ranetadpnm52" path="res://Enemies/Prefabs/JumpingEnemy.tscn" id="2_uod6x"]
 [ext_resource type="PackedScene" uid="uid://bbl0vnywqdhfh" path="res://Enemies/Prefabs/DashingEnemy.tscn" id="4_5n1m0"]
 [ext_resource type="Script" path="res://poetry_trigger.gd" id="5_e6p24"]
 
@@ -32,9 +31,6 @@ size = Vector2(64, 67)
 
 [node name="Player" parent="." instance=ExtResource("1_ti5pg")]
 position = Vector2(508, -71)
-
-[node name="Enemy" parent="." instance=ExtResource("2_uod6x")]
-position = Vector2(-474, -153)
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
 position = Vector2(-59, 14)

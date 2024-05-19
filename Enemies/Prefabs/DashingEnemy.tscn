@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbl0vnywqdhfh"]
+[gd_scene load_steps=20 format=3 uid="uid://bbl0vnywqdhfh"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="1_4a27i"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/IdleState.gd" id="2_v4t3i"]
@@ -10,16 +10,103 @@
 [ext_resource type="Script" path="res://Enemies/Scripts/States/KnockedState.gd" id="8_rqal0"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/DeathState.gd" id="9_mbqj3"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="10_rkb0h"]
-[ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="11_rryj6"]
+[ext_resource type="Texture2D" uid="uid://dhp3v5dguosbu" path="res://Sprites/Enemy/big_monster_idle_ss.png" id="11_gidle"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="12_skmhi"]
+[ext_resource type="Texture2D" uid="uid://e4vaogh50f00" path="res://Sprites/Enemy/big_monster_walk_ss.png" id="13_hfslx"]
 [ext_resource type="Script" path="res://Character/HealthComponent.gd" id="13_xugx1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
-radius = 18.0
-height = 74.0
+radius = 57.0
+height = 118.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4fym"]
-radius = 15.0
+radius = 54.7449
+
+[sub_resource type="Animation" id="Animation_slvos"]
+resource_name = "idle"
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_gidle")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_hsqa7"]
+resource_name = "walk"
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_hfslx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayrt4"]
+_data = {
+"idle": SubResource("Animation_slvos"),
+"walk": SubResource("Animation_hsqa7")
+}
 
 [node name="DashingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("begining_state", "any_states")]
 collision_layer = 4
@@ -109,6 +196,7 @@ avoidance_layers = 0
 avoidance_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -24)
 shape = SubResource("CircleShape2D_y4fym")
 
 [node name="sound_emiter" type="Node2D" parent="."]
@@ -118,8 +206,8 @@ script = ExtResource("10_rkb0h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 1, 1)
 position = Vector2(0, -40)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_rryj6")
+scale = Vector2(-0.2, 0.2)
+texture = ExtResource("11_gidle")
 hframes = 6
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
@@ -135,6 +223,9 @@ shape = SubResource("CapsuleShape2D_8vo1v")
 
 [node name="animator" type="AnimationPlayer" parent="Sprite2D"]
 unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ayrt4")
+}
 
 [node name="health_component" type="Area2D" parent="."]
 collision_layer = 16
@@ -145,6 +236,7 @@ max_hp = 6
 
 [node name="hitbox" type="CollisionShape2D" parent="health_component"]
 position = Vector2(0, -21)
+rotation = 1.56401
 shape = SubResource("CapsuleShape2D_8vo1v")
 
 [connection signal="timeout" from="states/walk/step_timer" to="states/walk" method="_on_step_timer_timeout"]

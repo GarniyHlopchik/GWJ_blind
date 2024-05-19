@@ -16,6 +16,7 @@ var timer = null;
 signal timeout;
 
 func _process(delta: float) -> void:
+	print(state)
 	if(timer):
 		if(timer > 0):
 			sprite_2d.self_modulate.a = timer / .3;
