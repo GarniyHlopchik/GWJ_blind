@@ -12,10 +12,9 @@ var pattern_index: int = 0;
 
 func _process(delta: float) -> void:
 	if(!sit_timer.is_sit):
-		if(!Input.is_action_just_pressed("Any_note")):
-			return;
-		else:
-			sit_timer.sit()
+		return;
+	if(!Input.is_action_just_pressed("Any_note")):
+		return;
 	animation_player.play("play_sitting")
 	for i in notes_audio.size():
 		if(Input.is_action_just_pressed("Note_%s" % (i+1))):

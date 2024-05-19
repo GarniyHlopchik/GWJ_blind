@@ -59,7 +59,36 @@ func _got_up():
 
 func _on_sit() -> void:
 	can_move = false
+@export var fade_time: float
+@export var delay_time: float
+@export var life_time: float
 func display_text(text,voice):
-	print(text)
 	$voice.stream = voice
 	$voice.play()
+	var words_arr = text.split("/")
+	for i in words_arr:
+		i = i.split(" ")
+		var h_box = HBoxContainer.new()
+		#h_box.alignment = BoxContainer.ALIGNMENT_CENTER
+		%text.add_child(h_box)
+		for a in i:
+			var label = Label.new()
+			label.text = a
+			%text.get_node(str(h_box.name)).add_child(label)
+			var tween = get_tree().create_tween()
+			label.modulate.a = 0.0
+			tween.tween_property(label,"modulate:a",1.0,fade_time)
+			await get_tree().create_timer(delay_time).timeout
+	await get_tree().create_timer(life_time).timeout
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	for i in %text.get_children():
+		for a in i.get_children():
+			tween.tween_property(a,"modulate:a",0.0,fade_time)
+	for i in %text.get_children():
+		i.queue_free()
+	
+
+
+func _on_word_timeout_timeout() -> void:
+	pass # Replace with function body.

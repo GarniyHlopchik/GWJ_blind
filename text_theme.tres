@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bep5tkoewmyul"]
+
+[ext_resource type="FontFile" uid="uid://bmsjvqn7nlhjq" path="res://MainMenu/IMFeENsc29P.ttf" id="1_i3px4"]
+
+[resource]
+default_font = ExtResource("1_i3px4")
+default_font_size = 52

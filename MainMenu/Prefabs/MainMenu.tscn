@@ -8,12 +8,11 @@
 [ext_resource type="FontFile" uid="uid://bl38vhtjpv54n" path="res://MainMenu/IMFeENrm29P.ttf" id="5_ew0vc"]
 [ext_resource type="PackedScene" uid="uid://bewgnp7r24g5h" path="res://MainMenu/Prefabs/Button.tscn" id="6_nvgyo"]
 [ext_resource type="FontFile" uid="uid://bmsjvqn7nlhjq" path="res://MainMenu/IMFeENsc29P.ttf" id="7_egocs"]
+[ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="8_befu8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3b3rh"]
 font = ExtResource("5_ew0vc")
 font_size = 100
-
-[sub_resource type="Theme" id="Theme_wtw1v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vac8r"]
 font = ExtResource("7_egocs")
@@ -75,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_wtw1v")
+theme = ExtResource("8_befu8")
 alignment = 1
 script = ExtResource("4_wccji")
 text = "Start"
@@ -97,7 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_wtw1v")
+theme = ExtResource("8_befu8")
 alignment = 1
 script = ExtResource("4_wccji")
 text = "Quit"
