@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbl0vnywqdhfh"]
+[gd_scene load_steps=26 format=3 uid="uid://bbl0vnywqdhfh"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/EnemyStateMachine.gd" id="1_4a27i"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/IdleState.gd" id="2_v4t3i"]
@@ -11,9 +11,12 @@
 [ext_resource type="Script" path="res://Enemies/Scripts/States/DeathState.gd" id="9_mbqj3"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="10_rkb0h"]
 [ext_resource type="Texture2D" uid="uid://dhp3v5dguosbu" path="res://Sprites/Enemy/big_monster_idle_ss.png" id="11_gidle"]
+[ext_resource type="Texture2D" uid="uid://gq07kr3hp41" path="res://Sprites/Enemy/big_monster_attack_ss.png" id="11_kw28a"]
+[ext_resource type="Texture2D" uid="uid://b2v7f7kptj0p3" path="res://Sprites/Enemy/big_monster_knocked_ss.png" id="11_y1e4g"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="12_skmhi"]
 [ext_resource type="Texture2D" uid="uid://e4vaogh50f00" path="res://Sprites/Enemy/big_monster_walk_ss.png" id="13_hfslx"]
 [ext_resource type="Script" path="res://Character/HealthComponent.gd" id="13_xugx1"]
+[ext_resource type="Texture2D" uid="uid://dy7x6ctf0hlwa" path="res://Sprites/Enemy/big_monster_prepare_ss.png" id="16_0u8cw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vo1v"]
 radius = 57.0
@@ -102,9 +105,134 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_tkujk"]
+resource_name = "knocked"
+length = 0.5
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_y1e4g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_pnykm"]
+resource_name = "prepare"
+length = 0.5
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_0u8cw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_uj03g"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_kw28a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ayrt4"]
 _data = {
+"attack": SubResource("Animation_uj03g"),
 "idle": SubResource("Animation_slvos"),
+"knocked": SubResource("Animation_tkujk"),
+"prepare": SubResource("Animation_pnykm"),
 "walk": SubResource("Animation_hsqa7")
 }
 
@@ -207,8 +335,9 @@ script = ExtResource("10_rkb0h")
 self_modulate = Color(1, 0, 1, 1)
 position = Vector2(0, -40)
 scale = Vector2(-0.2, 0.2)
-texture = ExtResource("11_gidle")
-hframes = 6
+texture = ExtResource("11_kw28a")
+hframes = 5
+frame = 4
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 position = Vector2(0, 200)
