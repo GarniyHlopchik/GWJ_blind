@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgcln5701nr2p"]
+[gd_scene load_steps=17 format=3 uid="uid://dgcln5701nr2p"]
 
 [ext_resource type="Script" path="res://MainMenu/Scripts/MainMenu.gd" id="1_4ol41"]
 [ext_resource type="Script" path="res://MainMenu/Scripts/MouseWaves.gd" id="1_ui3il"]
@@ -40,6 +40,27 @@ corner_radius_bottom_left = 5
 font = ExtResource("7_egocs")
 font_size = 80
 font_color = Color(1, 0.435294, 0.431373, 1)
+
+[sub_resource type="GDScript" id="GDScript_3rfq4"]
+resource_name = "ExpandableLine"
+script/source = "extends Line2D
+
+func merge_polygons():
+	var lines = get_tree().root\\
+		.get_children(true)\\
+		.filter(func (n): return n is SoundLine) as Array[SoundLine];
+	for line in lines:
+		var line_polygon = line.get_global_polygon()
+		var new_polygons = Geometry2D.intersect_polygons(points, line_polygon);
+		#print(line.name, \" \", new_polygons.size() > 0)
+		if(new_polygons.size() > 0):
+			#points = new_polygons[0]
+			var merge = Geometry2D.merge_polygons(points, line_polygon)[0]
+			points = merge
+			
+func _process(delta: float) -> void:
+	merge_polygons();
+"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -138,6 +159,12 @@ settings = SubResource("LabelSettings_y2qpl")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_702c6")
 autoplay = true
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(429, 188, 639, 281, 373, 454)
+closed = true
+script = SubResource("GDScript_3rfq4")
 
 [connection signal="button_click" from="Start_button" to="." method="start"]
 [connection signal="button_click" from="Quit_button" to="." method="quit"]
