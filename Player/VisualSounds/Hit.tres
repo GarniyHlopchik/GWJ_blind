@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=7 format=3 uid="uid://bauw7htp4aqjn"]
+
+[ext_resource type="AudioStream" uid="uid://o0tkef1hv2yy" path="res://Audio/sfx/bard_hit/enemy hit-001.wav" id="1_ktfdy"]
+[ext_resource type="AudioStream" uid="uid://7d5avhfeuybv" path="res://Audio/sfx/bard_hit/enemy hit-002.wav" id="2_w42cw"]
+[ext_resource type="AudioStream" uid="uid://debf8yo1p7mqm" path="res://Audio/sfx/bard_hit/enemy hit-003.wav" id="3_ei5mp"]
+[ext_resource type="AudioStream" uid="uid://vgclo50hskke" path="res://Audio/sfx/bard_hit/enemy hit-004.wav" id="4_3wr04"]
+[ext_resource type="AudioStream" uid="uid://dnurud1kb5iuq" path="res://Audio/sfx/bard_hit/enemy hit-005.wav" id="5_mepd7"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="6_uqaf7"]
+
+[resource]
+script = ExtResource("6_uqaf7")
+audio = Array[AudioStream]([ExtResource("1_ktfdy"), ExtResource("2_w42cw"), ExtResource("3_ei5mp"), ExtResource("4_3wr04"), ExtResource("5_mepd7")])
+color = Color(0, 1, 1, 0.882353)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

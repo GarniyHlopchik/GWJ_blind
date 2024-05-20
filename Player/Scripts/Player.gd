@@ -9,11 +9,6 @@ class_name Player
 
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 
-
-
-@export var sword_slash: Array[AudioStream]
-@export var hit_sfx: Array[AudioStream]
-
 var direction: Vector2;
 
 func _ready() -> void:

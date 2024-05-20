@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=7 format=3 uid="uid://cvo0gxa2v0elh"]
+
+[ext_resource type="AudioStream" uid="uid://uixdvu6m88fo" path="res://Audio/sfx/sword/sword_attack-001.wav" id="1_1xv4s"]
+[ext_resource type="AudioStream" uid="uid://b7bb4bk5ge8ag" path="res://Audio/sfx/sword/sword_attack-002.wav" id="2_ij1ac"]
+[ext_resource type="AudioStream" uid="uid://0a2g42mv0s0p" path="res://Audio/sfx/sword/sword_attack-003.wav" id="3_hd1tp"]
+[ext_resource type="AudioStream" uid="uid://bnd56llx67hj" path="res://Audio/sfx/sword/sword_attack-004.wav" id="4_dpttq"]
+[ext_resource type="AudioStream" uid="uid://fwx76f5brcnj" path="res://Audio/sfx/sword/sword_attack-005.wav" id="5_nq4wu"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="6_fud4b"]
+
+[resource]
+script = ExtResource("6_fud4b")
+audio = Array[AudioStream]([ExtResource("1_1xv4s"), ExtResource("2_ij1ac"), ExtResource("3_hd1tp"), ExtResource("4_dpttq"), ExtResource("5_nq4wu")])
+color = Color(1, 1, 1, 0.729412)
+width = 1.0
+lifetime = 0.3
+fadetime = 0.0
+speed = 500.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=55 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/BladeAnimator.gd" id="28_nlbe3"]
 [ext_resource type="Texture2D" uid="uid://c3qjeq4b1o25u" path="res://Sprites/Player/sword.png" id="28_um6wv"]
 [ext_resource type="AudioStream" uid="uid://b0iuyckx1frdt" path="res://Audio/Stand up.wav" id="29_4868w"]
+[ext_resource type="Resource" uid="uid://cvo0gxa2v0elh" path="res://Enemies/VisualSounds/SwordSlash.tres" id="33_cb3dd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb2fr"]
 radius = 15.0
@@ -551,6 +552,7 @@ collision_layer = 0
 collision_mask = 16
 script = ExtResource("16_j0q56")
 attack_info = ExtResource("24_pfmrp")
+sword_slash = ExtResource("33_cb3dd")
 
 [node name="Sprite2D" type="Sprite2D" parent="blade"]
 visible = false
@@ -594,6 +596,8 @@ one_shot = true
 [node name="attack_duration" type="Timer" parent="blade"]
 wait_time = 0.05
 one_shot = true
+
+[node name="sword_sound_player" type="AudioStreamPlayer" parent="blade"]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_evxge")

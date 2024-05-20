@@ -10,6 +10,8 @@ var can_attack = true
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 @onready var player: Player = $".."
 
+@export var sword_slash: SoundVisual
+
 func _process(delta: float) -> void:
 	attac_dir = global_position.direction_to(get_global_mouse_position())
 	look_at(get_global_mouse_position())
@@ -17,8 +19,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if(!player.can_move): return;
 	if Input.is_action_just_pressed("Attack") and can_attack:
-		get_parent().get_node("sword_sfx").stream = get_parent().sword_slash[randi_range(0,4)]
-		get_parent().get_node("sword_sfx").play()
+		sound_emiter.emit_wave(sword_slash);
 		on_attack_started.emit();
 		can_attack = false
 		is_attacking = true;
