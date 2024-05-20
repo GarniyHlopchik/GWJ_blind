@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgcln5701nr2p"]
+[gd_scene load_steps=17 format=3 uid="uid://dgcln5701nr2p"]
 
 [ext_resource type="Script" path="res://MainMenu/Scripts/MainMenu.gd" id="1_4ol41"]
 [ext_resource type="Script" path="res://MainMenu/Scripts/MouseWaves.gd" id="1_ui3il"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bmsjvqn7nlhjq" path="res://MainMenu/IMFeENsc29P.ttf" id="7_egocs"]
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="8_befu8"]
 [ext_resource type="AudioStream" uid="uid://cy1do31o3q4e" path="res://Audio/Music/menu_music.wav" id="10_702c6"]
+[ext_resource type="Gradient" uid="uid://ilmfsrylrokk" path="res://MainMenu/gradient.tres" id="11_y8qfe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ved42"]
 font = ExtResource("5_ew0vc")
@@ -138,6 +139,11 @@ settings = SubResource("LabelSettings_y2qpl")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_702c6")
 autoplay = true
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(362, 298, 672, 283, 570, 548)
+closed = true
+gradient = ExtResource("11_y8qfe")
 
 [connection signal="button_click" from="Start_button" to="." method="start"]
 [connection signal="button_click" from="Quit_button" to="." method="quit"]
