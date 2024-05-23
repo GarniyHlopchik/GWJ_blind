@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=61 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
@@ -20,8 +20,8 @@
 [ext_resource type="Script" path="res://Player/Scripts/Blade.gd" id="16_j0q56"]
 [ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="17_h3t5y"]
 [ext_resource type="Texture2D" uid="uid://2wj6yv8a4a74" path="res://Sprites/Player/walk.png" id="17_psbc7"]
-[ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F#.tres" id="17_tped4"]
 [ext_resource type="Script" path="res://SoundVisual/SoundPrint.gd" id="18_jvyfl"]
+[ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F.tres" id="18_l0s7g"]
 [ext_resource type="Resource" uid="uid://bpty6xo1iifjn" path="res://Player/VisualSounds/Pattern.tres" id="18_p3aeu"]
 [ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
 [ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
@@ -33,7 +33,10 @@
 [ext_resource type="Resource" uid="uid://bcvscdna3tykw" path="res://Player/Attack.tres" id="24_pfmrp"]
 [ext_resource type="AudioStream" uid="uid://cjvsbf3g5ob5h" path="res://Audio/Music/tonal ambient.wav" id="25_evxge"]
 [ext_resource type="Script" path="res://Player/Scripts/MusicFade.gd" id="26_2kq0c"]
+[ext_resource type="Texture2D" uid="uid://q0ovfy4gry10" path="res://Sprites/Player/knocked.png" id="26_puoew"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerHealth.gd" id="27_eqdtn"]
+[ext_resource type="Texture2D" uid="uid://bon0jqsosaywc" path="res://Sprites/Player/play_standing.png" id="27_h5iev"]
+[ext_resource type="Texture2D" uid="uid://dk266gabrtrpb" path="res://Sprites/Player/death.png" id="28_1nv44"]
 [ext_resource type="AudioStream" uid="uid://dxycvfs7wrtu5" path="res://Audio/Sit down.wav" id="28_hr3sq"]
 [ext_resource type="Script" path="res://Player/Scripts/BladeAnimator.gd" id="28_nlbe3"]
 [ext_resource type="Texture2D" uid="uid://c3qjeq4b1o25u" path="res://Sprites/Player/sword.png" id="28_um6wv"]
@@ -353,7 +356,7 @@ tracks/1/path = NodePath("../AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0.0770835, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -388,12 +391,138 @@ tracks/3/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_tjfd6"]
+resource_name = "knocked"
+length = 1.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_puoew")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ujqnv"]
+resource_name = "play_standing"
+length = 0.60001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_h5iev")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_a4lu2"]
+resource_name = "death"
+length = 1.00001
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("28_1nv44")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
 _data = {
 "RESET": SubResource("Animation_s0pgx"),
 "attack": SubResource("Animation_6fx67"),
+"death": SubResource("Animation_a4lu2"),
 "idle": SubResource("Animation_3he5b"),
+"knocked": SubResource("Animation_tjfd6"),
 "play_sitting": SubResource("Animation_pyl0e"),
+"play_standing": SubResource("Animation_ujqnv"),
 "sit": SubResource("Animation_tehqk"),
 "stand_up": SubResource("Animation_7dsek"),
 "walk": SubResource("Animation_ooot5")
@@ -508,7 +637,7 @@ chord_particle = ExtResource("5_kpy64")
 
 [node name="notes" type="Node2D" parent="."]
 script = ExtResource("18_rqeu1")
-notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("17_tped4")])
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("18_l0s7g")])
 correct_pattern_audio = ExtResource("18_p3aeu")
 
 [node name="sound_emiter" type="Node2D" parent="."]
@@ -621,6 +750,7 @@ shape = SubResource("CapsuleShape2D_divfl")
 [connection signal="on_get_up" from="sit_timer" to="AnimationPlayer" method="_on_get_up"]
 [connection signal="on_sit" from="sit_timer" to="." method="_on_sit"]
 [connection signal="on_sit" from="sit_timer" to="AnimationPlayer" method="_on_sit"]
+[connection signal="play_chord" from="chord_cooldown" to="AnimationPlayer" method="_on_play_chord"]
 [connection signal="note_played" from="notes" to="AnimationPlayer" method="_on_play_note"]
 [connection signal="area_entered" from="blade" to="blade" method="_on_area_entered"]
 [connection signal="body_entered" from="blade" to="blade" method="_on_body_entered"]
@@ -630,3 +760,5 @@ shape = SubResource("CapsuleShape2D_divfl")
 [connection signal="on_attack_started" from="blade" to="blade/AnimationPlayer" method="_handle_attack_started"]
 [connection signal="timeout" from="blade/attack_cooldown" to="blade" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="blade/attack_duration" to="blade" method="_on_attack_duration_timeout"]
+[connection signal="on_death" from="health_component" to="AnimationPlayer" method="_on_death"]
+[connection signal="on_take_damage" from="health_component" to="AnimationPlayer" method="_on_knocked"]

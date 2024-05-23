@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=6 format=3 uid="uid://c1cp5qmb6qr76"]
+
+[ext_resource type="AudioStream" uid="uid://us8i2kc5qjbd" path="res://Audio/Instrument/Notes/Note 11 - F-001.wav" id="1_ulowo"]
+[ext_resource type="AudioStream" uid="uid://b3q8loqsttihu" path="res://Audio/Instrument/Notes/Note 11 - F-002.wav" id="2_0q4fs"]
+[ext_resource type="AudioStream" uid="uid://cm5rk20kxi2of" path="res://Audio/Instrument/Notes/Note 11 - F-003.wav" id="3_ym2rq"]
+[ext_resource type="AudioStream" uid="uid://hmk0ek1dp784" path="res://Audio/Instrument/Notes/Note 11 - F-004.wav" id="4_f2k2g"]
+[ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="5_j4kuy"]
+
+[resource]
+script = ExtResource("5_j4kuy")
+audio = Array[AudioStream]([ExtResource("1_ulowo"), ExtResource("2_0q4fs"), ExtResource("3_ym2rq"), ExtResource("4_f2k2g")])
+color = Color(1, 1, 0, 1)
+width = 1.5
+lifetime = 0.0
+fadetime = 1.0
+speed = 500.0

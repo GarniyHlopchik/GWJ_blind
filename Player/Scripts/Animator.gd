@@ -13,13 +13,16 @@ extends AnimationPlayer
 
 var prev_direction: bool;
 
-enum State {IDLE, WALK, ATTACK, SIT, STAND_UP, PLAY_SITTING}
+enum State {IDLE, WALK, ATTACK, SIT, STAND_UP, PLAY_SITTING, KNOCKED, PLAY_STANDING, DEATH}
 var state: State = State.IDLE;
 
 var timer = null;
 signal timeout;
 
 func _process(delta: float) -> void:
+	if(state == State.DEATH):
+		_death(delta);
+		return;
 	if(timer):
 		if(timer > 0):
 			sprite_2d.self_modulate.a = timer / .3;
@@ -36,6 +39,27 @@ func _process(delta: float) -> void:
 	current_animation = state_name
 	if(state != State.SIT && state != State.STAND_UP):
 		play(state_name);
+
+
+func _knocked(delta: float):
+	sprite_2d.flip_h = prev_direction;
+	if(player.knocked_velocity == Vector2.ZERO):
+		state = State.IDLE
+		
+func _death(delta: float):
+	sprite_2d.flip_h = prev_direction;
+	sound_print.enabled = false;
+	sprite_2d.self_modulate.a = 1;
+	sprite_2d.modulate.a = 1
+	
+func _death_finished(delta: float):
+	death_animation_finishied.emit()
+signal death_animation_finishied;
+
+func _play_standing(delta: float):
+	sprite_2d.flip_h = prev_direction;
+	await animation_finished;
+	state = State.WALK
 
 func _sit(delta: float):
 	sprite_2d.flip_h = prev_direction;
@@ -106,3 +130,19 @@ func _on_got_up() -> void:
 	play("idle");
 	state = State.IDLE;
 	sound_print.enabled = true;
+
+
+func _on_death() -> void:
+	state = State.DEATH;
+	play("death");
+	if(!animation_finished.is_connected(_death_finished)):
+		animation_finished.connect(_death_finished);
+
+
+func _on_knocked(attack_info: Variant) -> void:
+	state = State.KNOCKED;
+
+
+func _on_play_chord() -> void:
+	if(state != State.PLAY_SITTING):
+		state = State.PLAY_STANDING;

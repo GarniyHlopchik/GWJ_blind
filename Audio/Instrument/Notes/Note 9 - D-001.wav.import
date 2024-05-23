@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ch4cnnex3vlne"
+path="res://.godot/imported/Note 9 - D-001.wav-4f0879129ccefa223276890fead16009.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Notes/Note 9 - D-001.wav"
+dest_files=["res://.godot/imported/Note 9 - D-001.wav-4f0879129ccefa223276890fead16009.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

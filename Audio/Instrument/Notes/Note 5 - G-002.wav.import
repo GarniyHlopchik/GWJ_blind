@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2j7b6dmd00w7"
+path="res://.godot/imported/Note 5 - G-002.wav-a18fc98492d9bef987e7a64b1a100569.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Notes/Note 5 - G-002.wav"
+dest_files=["res://.godot/imported/Note 5 - G-002.wav-a18fc98492d9bef987e7a64b1a100569.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

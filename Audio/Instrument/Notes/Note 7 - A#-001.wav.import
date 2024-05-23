@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cyl2y8oott2iy"
+path="res://.godot/imported/Note 7 - A#-001.wav-59d24e81be2be52309c93bf24c7071a8.sample"
+
+[deps]
+
+source_file="res://Audio/Instrument/Notes/Note 7 - A#-001.wav"
+dest_files=["res://.godot/imported/Note 7 - A#-001.wav-59d24e81be2be52309c93bf24c7071a8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

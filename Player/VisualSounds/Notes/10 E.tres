@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://bikqkx1cslb0a"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=8 format=3 uid="uid://bikqkx1cslb0a"]
 
-[ext_resource type="AudioStream" uid="uid://b7jtkw8hh85pi" path="res://Audio/Instrument/Notes/Note 10 - E.wav" id="1_a0iyu"]
+[ext_resource type="AudioStream" uid="uid://2nh0rrawyhfy" path="res://Audio/Instrument/Notes/Note 10 - E-001.wav" id="1_s1a7w"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_dbvxk"]
+[ext_resource type="AudioStream" uid="uid://da3hbm0ufcjgo" path="res://Audio/Instrument/Notes/Note 10 - E-002.wav" id="2_sr0sk"]
+[ext_resource type="AudioStream" uid="uid://dy6tyl8h2spna" path="res://Audio/Instrument/Notes/Note 10 - E-003.wav" id="3_nx6if"]
+[ext_resource type="AudioStream" uid="uid://bpv2srtfmvjv1" path="res://Audio/Instrument/Notes/Note 10 - E-004.wav" id="4_w587l"]
+[ext_resource type="AudioStream" uid="uid://bn34mfisbqr6c" path="res://Audio/Instrument/Notes/Note 10 - E-005.wav" id="5_rblbu"]
+[ext_resource type="AudioStream" uid="uid://s6j55gsgfroo" path="res://Audio/Instrument/Notes/Note 10 - E-006.wav" id="6_2o676"]
 
 [resource]
 script = ExtResource("2_dbvxk")
-audio = Array[AudioStream]([ExtResource("1_a0iyu")])
+audio = Array[AudioStream]([ExtResource("1_s1a7w"), ExtResource("2_sr0sk"), ExtResource("3_nx6if"), ExtResource("4_w587l"), ExtResource("5_rblbu"), ExtResource("6_2o676")])
 color = Color(1, 1, 0, 1)
 width = 1.5
 lifetime = 0.0

@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="SoundVisual" load_steps=3 format=3 uid="uid://bxeem133rbk56"]
+[gd_resource type="Resource" script_class="SoundVisual" load_steps=7 format=3 uid="uid://bxeem133rbk56"]
 
-[ext_resource type="AudioStream" uid="uid://beg26375ity7l" path="res://Audio/Instrument/Notes/Note 09 - D.wav" id="1_8mgym"]
+[ext_resource type="AudioStream" uid="uid://ch4cnnex3vlne" path="res://Audio/Instrument/Notes/Note 9 - D-001.wav" id="1_t5tik"]
 [ext_resource type="Script" path="res://SoundVisual/SoundVisual.gd" id="2_d2fx8"]
+[ext_resource type="AudioStream" uid="uid://3jutsh8bsg74" path="res://Audio/Instrument/Notes/Note 9 - D-002.wav" id="2_ucs2f"]
+[ext_resource type="AudioStream" uid="uid://de5mpcy421x6j" path="res://Audio/Instrument/Notes/Note 9 - D-003.wav" id="3_jf573"]
+[ext_resource type="AudioStream" uid="uid://7jfdo68bnaf0" path="res://Audio/Instrument/Notes/Note 9 - D-004.wav" id="4_wdn7c"]
+[ext_resource type="AudioStream" uid="uid://braj213rhcg6a" path="res://Audio/Instrument/Notes/Note 9 - D-005.wav" id="5_larlg"]
 
 [resource]
 script = ExtResource("2_d2fx8")
-audio = Array[AudioStream]([ExtResource("1_8mgym")])
+audio = Array[AudioStream]([ExtResource("1_t5tik"), ExtResource("2_ucs2f"), ExtResource("3_jf573"), ExtResource("4_wdn7c"), ExtResource("5_larlg")])
 color = Color(1, 1, 0, 1)
 width = 1.5
 lifetime = 0.0

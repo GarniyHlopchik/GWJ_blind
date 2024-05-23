@@ -35,9 +35,7 @@ func _damage_reaction(attack_info: AttackInfo):
 	knocked_velocity = Vector2.ZERO;
 	
 func _death():
-	#var menu_obj = menu_scene.instantiate()
-	#get_tree().root.add_child(menu_obj)
-	get_parent().queue_free()
+	health_component.queue_free()
 
 func _process(delta: float) -> void:
 	PlayerState.position = global_position;

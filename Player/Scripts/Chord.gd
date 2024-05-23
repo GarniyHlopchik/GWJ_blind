@@ -4,8 +4,11 @@ extends Timer
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 var chord_ready = true;
 
-func _process(delta: float) -> void:
+signal play_chord;
+
+func _unhandled_input(event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("Play") && chord_ready):
+		play_chord.emit();
 		sound_emiter.emit_wave(chord_particle);
 		start();
 		chord_ready = false;
