@@ -12,7 +12,7 @@ var pattern_index: int = 0;
 
 signal note_played;
 	
-func _process(delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if(!sit_timer.is_sit):
 		return;
 	if(!Input.is_action_just_pressed("Any_note")):

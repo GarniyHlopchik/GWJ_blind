@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=62 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://c1cp5qmb6qr76" path="res://Player/VisualSounds/Notes/11 F.tres" id="18_l0s7g"]
 [ext_resource type="Resource" uid="uid://bpty6xo1iifjn" path="res://Player/VisualSounds/Pattern.tres" id="18_p3aeu"]
 [ext_resource type="Script" path="res://Player/Scripts/Notes.gd" id="18_rqeu1"]
+[ext_resource type="Resource" uid="uid://bu3l08xa0l25x" path="res://Player/VisualSounds/Notes/12 F#.tres" id="19_2ev5w"]
 [ext_resource type="Script" path="res://Player/Scripts/Animator.gd" id="19_jj5cj"]
 [ext_resource type="Resource" uid="uid://by74txr0wud2k" path="res://Player/VisualSounds/Step.tres" id="20_de0kk"]
 [ext_resource type="Texture2D" uid="uid://ejmaq1wy35m2" path="res://Sprites/Player/idle.png" id="21_6jvjt"]
@@ -127,6 +128,47 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_a4lu2"]
+resource_name = "death"
+length = 1.00001
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("28_1nv44")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
 [sub_resource type="Animation" id="Animation_3he5b"]
 resource_name = "idle"
 length = 1.20002
@@ -169,6 +211,48 @@ tracks/2/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_tjfd6"]
+resource_name = "knocked"
+length = 1.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_puoew")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_pyl0e"]
 resource_name = "play_sitting"
 loop_mode = 1
@@ -205,6 +289,46 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ujqnv"]
+resource_name = "play_standing"
+length = 0.60001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_h5iev")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -391,129 +515,6 @@ tracks/3/keys = {
 "values": [6]
 }
 
-[sub_resource type="Animation" id="Animation_tjfd6"]
-resource_name = "knocked"
-length = 1.0001
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("26_puoew")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ujqnv"]
-resource_name = "play_standing"
-length = 0.60001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("27_h5iev")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_a4lu2"]
-resource_name = "death"
-length = 1.00001
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("28_1nv44")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gby43"]
 _data = {
 "RESET": SubResource("Animation_s0pgx"),
@@ -637,7 +638,7 @@ chord_particle = ExtResource("5_kpy64")
 
 [node name="notes" type="Node2D" parent="."]
 script = ExtResource("18_rqeu1")
-notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("18_l0s7g")])
+notes_audio = Array[Resource("res://SoundVisual/SoundVisual.gd")]([ExtResource("7_ac2rc"), ExtResource("8_sqrow"), ExtResource("9_n3xd0"), ExtResource("10_3x7yu"), ExtResource("11_nco73"), ExtResource("12_jj07r"), ExtResource("13_3g485"), ExtResource("14_lmjqm"), ExtResource("15_8hpbh"), ExtResource("16_88oet"), ExtResource("18_l0s7g"), ExtResource("19_2ev5w")])
 correct_pattern_audio = ExtResource("18_p3aeu")
 
 [node name="sound_emiter" type="Node2D" parent="."]
