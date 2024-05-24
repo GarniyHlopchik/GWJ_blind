@@ -7,3 +7,4 @@ class_name SoundVisual
 @export var lifetime: float = 1;
 @export var fadetime: float = 1
 @export var speed: float = 500
+@export var embeddedness: int = 1;

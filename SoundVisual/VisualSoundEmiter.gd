@@ -1,7 +1,7 @@
 extends Node2D
 class_name VisualSoundEmiter
 
-@export var ray_cast_point_amount = 50;
+@export var ray_cast_point_amount: int = 50;
 
 func _ready() -> void:
 	var angle = PI * 2 / ray_cast_point_amount;
@@ -21,4 +21,5 @@ func emit_wave(sound: SoundVisual):
 	line.global_position = global_position;
 	line.rays = get_children() as Array[RayCast2D];
 	line.sound = sound
+	line.embeddedness = sound.embeddedness-1;
 	get_viewport().add_child(line);

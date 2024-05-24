@@ -38,7 +38,8 @@
 script = ExtResource("1_p1uic")
 audio = Array[AudioStream]([ExtResource("1_juk0x"), ExtResource("2_whtv3"), ExtResource("3_14f84"), ExtResource("4_vru4s"), ExtResource("5_f7qiw"), ExtResource("6_s1rhm"), ExtResource("7_2muee"), ExtResource("8_fp2p1"), ExtResource("9_r53vi"), ExtResource("10_pml8w"), ExtResource("11_ibnco"), ExtResource("12_yntyb"), ExtResource("13_2rmrb"), ExtResource("14_r22nw"), ExtResource("14_mdanw"), ExtResource("15_l2yr4"), ExtResource("16_pyyi5"), ExtResource("17_1uove"), ExtResource("19_d55fd"), ExtResource("20_8562g"), ExtResource("21_vg75f"), ExtResource("21_jsbwv"), ExtResource("22_jmqvg"), ExtResource("23_w4ahh"), ExtResource("24_0riyf"), ExtResource("25_ymkry"), ExtResource("26_n6tcc"), ExtResource("27_67umf"), ExtResource("28_7i8nb"), ExtResource("29_rr5px"), ExtResource("30_7d6en"), ExtResource("31_dq6ln")])
 color = Color(1, 1, 0, 1)
-width = 2
+width = 1.0
 lifetime = 2.0
 fadetime = 2.0
 speed = 500.0
+embeddedness = 2

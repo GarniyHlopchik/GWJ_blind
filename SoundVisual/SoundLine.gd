@@ -1,6 +1,7 @@
 extends Line2D
 class_name SoundLine
 
+var embeddedness;
 var sound: SoundVisual;
 var rays: Array[Node];
 const PARTICLE_POINT = preload("res://SoundVisual/SoundPoint.tscn")
@@ -40,7 +41,7 @@ var existance_time:
 	get:
 		return sound.lifetime + sound.fadetime
 var audio_finished = false;
-
+var sound_points : PackedVector2Array;
 func _process(delta: float) -> void:
 	if(!sound):
 		return;
@@ -51,6 +52,6 @@ func _process(delta: float) -> void:
 	lifetime += delta;
 	if(lifetime > sound.lifetime):
 		fadetime += delta;
-		default_color.a = 1 - fadetime / sound.fadetime
+		default_color.a = sound.color.a * 1 - fadetime / sound.fadetime
 	if(fadetime > sound.fadetime && audio_finished):
 		queue_free();
