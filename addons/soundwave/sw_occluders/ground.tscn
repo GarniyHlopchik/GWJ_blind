@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cna8vlngayfbq"]
+
+[ext_resource type="Script" path="res://addons/soundwave/sw_occluders/ground.gd" id="1_bn1g4"]
+[ext_resource type="Texture2D" uid="uid://do7tm7rmlnco5" path="res://icon.svg" id="2_1rr1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqkov"]
+size = Vector2(128, 128)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tg5jy"]
+polygon = PackedVector2Array(-64, -13, 65, -13, 64, 64, -64, 64)
+
+[node name="Ground" type="StaticBody2D"]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 3
+script = ExtResource("1_bn1g4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 1
+texture = ExtResource("2_1rr1w")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yqkov")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
+occluder = SubResource("OccluderPolygon2D_tg5jy")
+occluder_light_mask = 2

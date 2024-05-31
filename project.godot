@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerState="*res://Player/Scripts/PlayerState.gd"
+SWSignal="*res://addons/soundwave/sw_signals.gd"
 
 [display]
 
@@ -28,6 +29,10 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="C:\\Users\\Admin\\Videos\\Captures"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/soundwave/plugin.cfg")
 
 [input]
 
@@ -147,6 +152,6 @@ Attack={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+viewport/hdr_2d=true
