@@ -7,6 +7,11 @@ class_name Player
 
 @export var menu_scene: PackedScene
 
+@export var wave_interval_time : float = 0.5
+var wave_interval_timer : float= 0.0
+
+@onready var sw_manager: SWManager = %SWManager
+
 @onready var sound_emiter: VisualSoundEmiter = %sound_emiter
 
 var direction: Vector2;
@@ -14,9 +19,23 @@ var direction: Vector2;
 func _ready() -> void:
 	health_component.on_take_damage.connect(_damage_reaction);
 	health_component.on_death.connect(_death);
+	SWSignal.sw_screen_ready.connect(_on_sw_screen_ready)
+	
+func _on_sw_screen_ready(_sw_screen: SWScreen) -> void:
+	_sw_screen.node_to_follow = self
 
 var knocked_velocity: Vector2;
 var knocked_timer: Timer;
+
+func _process(delta: float) -> void:
+	PlayerState.position = global_position;
+	wave_interval_timer = max( wave_interval_timer - delta, 0.0)
+
+	if Input.is_action_pressed("Play") and is_zero_approx(wave_interval_timer):
+		wave_interval_timer = wave_interval_time
+		var wave_launched := await sw_manager.ask_for_next_wave()
+		print( "is wave launched : ", wave_launched)
+
 
 func _damage_reaction(attack_info: AttackInfo):
 	#$hit_sfx.stream = hit_sfx[randi_range(0,3)]
@@ -36,9 +55,6 @@ func _damage_reaction(attack_info: AttackInfo):
 	
 func _death():
 	health_component.queue_free()
-
-func _process(delta: float) -> void:
-	PlayerState.position = global_position;
 
 func _physics_process(delta: float) -> void:
 	if(knocked_velocity != Vector2.ZERO):

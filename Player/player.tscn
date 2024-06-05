@@ -1,7 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://nafn1aysv3bb"]
+[gd_scene load_steps=64 format=3 uid="uid://nafn1aysv3bb"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_ddj2j"]
 [ext_resource type="Script" path="res://Player/Scripts/CameraMovement.gd" id="2_dhrwp"]
+[ext_resource type="Script" path="res://addons/soundwave/sw_manager.gd" id="2_pff0u"]
+[ext_resource type="Script" path="res://addons/soundwave/sw_wave.gd" id="3_g0j64"]
 [ext_resource type="Theme" uid="uid://bep5tkoewmyul" path="res://text_theme.tres" id="3_ry65t"]
 [ext_resource type="Resource" uid="uid://g3wo6f6s2bdl" path="res://Player/VisualSounds/Chord.tres" id="5_kpy64"]
 [ext_resource type="Script" path="res://SoundVisual/VisualSoundEmiter.gd" id="5_o25cj"]
@@ -601,6 +603,13 @@ speed = 300.0
 fade_time = 0.5
 delay_time = 0.3
 life_time = 1.5
+
+[node name="SWManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_pff0u")
+
+[node name="SWWave" type="Node2D" parent="SWManager"]
+script = ExtResource("3_g0j64")
 
 [node name="camera" type="Node2D" parent="."]
 top_level = true

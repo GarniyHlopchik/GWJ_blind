@@ -57,8 +57,7 @@ func ask_for_next_wave() -> bool:
 	
 	
 	var new_wave : SWWave = get_child(wave_index).duplicate()
-	wave_index = (wave_index + 1) % get_child_count() 
-	
+	wave_index = (wave_index + 1) % get_child_count() # Ignore occluder_detector
 	add_sibling(new_wave)
 	var mask := await sw_mask_baker.get_mask(global_position, new_wave.radius, occluder_detector.get_overlapping_bodies())
 	new_wave.start(mask)
